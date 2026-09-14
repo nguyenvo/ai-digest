@@ -1,0 +1,217 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Digest — Viết lại cho dễ đọc (thử nghiệm)</title>
+<style>
+:root{--bg:#F6F7F4;--surface:#FFFFFF;--ink:#1E2521;--muted:#5C665F;--line:#DDE2DB;--accent:#175E54;--accent-soft:#E3EEE9;--warn:#8A5A2F;--warn-soft:#F4ECE1;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141816;--surface:#1C211E;--ink:#E7EAE6;--muted:#9AA69E;--line:#2E3531;--accent:#5FBFAE;--accent-soft:#1F2E2A;--warn:#D0A175;--warn-soft:#2A231A;}}
+:root[data-theme="dark"]{--bg:#141816;--surface:#1C211E;--ink:#E7EAE6;--muted:#9AA69E;--line:#2E3531;--accent:#5FBFAE;--accent-soft:#1F2E2A;--warn:#D0A175;--warn-soft:#2A231A;}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;font:16.5px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif}
+.wrap{max-width:47rem;margin:0 auto;padding:2rem 1.25rem 4rem}
+header{border-bottom:2px solid var(--ink);padding-bottom:1.1rem;margin-bottom:1.2rem}
+.kicker{font:600 .72rem/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-weight:770;font-size:1.7rem;margin:.4rem 0 .5rem;letter-spacing:-.015em;line-height:1.2}
+.sub{color:var(--muted);font-size:.95rem}
+h2{font-size:1.3rem;font-weight:750;margin:2.6rem 0 .2rem;letter-spacing:-.01em}
+h3{font-size:1.02rem;font-weight:700;margin:1.4rem 0 .3rem}
+.intro{background:var(--accent-soft);border-radius:8px;padding:1rem 1.15rem;margin:1.2rem 0 1rem;font-size:.96rem}
+.recipe{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.9rem 1.15rem;margin:1rem 0 2rem}
+.recipe ol{margin:.4rem 0 0;padding-left:1.3rem} .recipe li{margin:.32rem 0}
+.paper{border-top:2px solid var(--ink);margin-top:2.6rem;padding-top:.4rem}
+.before,.after{border-radius:9px;padding:1rem 1.15rem;margin:.8rem 0}
+.before{background:var(--warn-soft);border:1px solid var(--line)}
+.after{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent)}
+.lab{font:700 .68rem/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;display:inline-block;padding:.25rem .5rem;border-radius:4px}
+.lab.b{background:var(--warn);color:#fff}.lab.a{background:var(--accent);color:#fff}
+.before p{color:var(--muted);font-size:.9rem;margin:.4rem 0}
+.analogy{font-size:1.02rem;margin:.5rem 0 .2rem}
+.analogy b{color:var(--accent)}
+.caveat{font-size:.83rem;color:var(--muted);font-style:italic;margin:.15rem 0 .8rem}
+figure{margin:1.1rem 0;padding:1rem;background:var(--bg);border:1px solid var(--line);border-radius:8px}
+figure svg{display:block;max-width:100%;height:auto;margin:0 auto}
+figcaption{font-size:.85rem;color:var(--muted);margin-top:.7rem;text-align:center}
+.num{background:var(--accent-soft);border-radius:6px;padding:.6rem .85rem;margin:.7rem 0;font-size:.95rem}
+.num b{color:var(--accent);font-size:1.05rem}
+.rel{margin-top:.7rem;padding:.55rem .8rem;background:var(--accent-soft);border-radius:6px;font-size:.92rem}
+.rel b{color:var(--accent)}
+details{margin:.6rem 0;font-size:.9rem}
+summary{cursor:pointer;color:var(--accent);font-weight:600}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:.4rem .55rem;text-align:left}
+th{background:var(--accent-soft)}
+.g5{color:var(--accent);font-weight:700}.g3{color:var(--warn);font-weight:700}
+footer{margin-top:2.6rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.8rem;color:var(--muted)}
+a{color:var(--accent)}
+</style></head><body>
+<div class="wrap">
+<header>
+  <div class="kicker">AI Digest · Thử nghiệm cách viết</div>
+  <h1>Viết lại cho dễ đọc: ví von + hình ảnh</h1>
+  <div class="sub">Bạn nói một bài review tốn quá nhiều sức đọc. Đây là 2 bài viết lại theo cách mới — mục tiêu là <b>rút ngắn thời gian bạn hiểu</b>, không phải rút ngắn bài.</div>
+</header>
+
+<div class="intro">
+Cùng một nội dung, hai cách trình bày. Mỗi bài dưới đây có phần <b>TRƯỚC</b> (kiểu cũ, dày chữ) và <b>SAU</b> (kiểu mới). Bạn đọc thử, xem cái nào vào đầu nhanh hơn. Cuối trang mình <b>tự chấm điểm</b> theo thang sư phạm và ghi cái gì đã sửa.
+</div>
+
+<div class="recipe">
+<b>Công thức “kiểu mới” cho mỗi paper (6 nhịp):</b>
+<ol>
+<li><b>Câu chốt 1 dòng</b> — paper tìm ra gì, nói bằng lời thường, không thuật ngữ.</li>
+<li><b>Ví von đời thường</b> — một hình ảnh quen thuộc chở đúng cái ý cốt lõi.</li>
+<li><b>Một sơ đồ</b> — vẽ cái cơ chế / cái khác nhau, không phải trang trí.</li>
+<li><b>Giải thích tầng</b> — tả trước, đặt tên sau; rồi <b>một con số</b> quyết định.</li>
+<li><b>“→ Với bạn”</b> — có ý nghĩa gì với repo của bạn.</li>
+<li>Thuật ngữ nào cũng <b>giải nghĩa tiếng Việt ngay lần đầu</b>. Muốn sâu thì bấm mở, không thì bỏ qua vẫn hiểu.</li>
+</ol>
+</div>
+
+<!-- ===================== PAPER 1 ===================== -->
+<div class="paper">
+<h2>Paper 1 — SKILL.state</h2>
+
+<div class="before">
+<span class="lab b">Trước · kiểu cũ</span>
+<p>Google. Thay lịch sử hội thoại bằng một object JSON trạng thái model tự cập nhật. Mỗi bước model chỉ thấy (spec bất biến, state hiện tại, quan sát mới nhất); trả về JSON patch; suy luận bị vứt có chủ đích. Prompt O(1) thay vì O(T), tổng token O(T) thay vì O(T²). […bảng 6 dòng số thô…] Hạn chế: giả định state là <i>sufficient statistic</i>; gãy khi schema phải khám phá dần. Chỉ single-agent.</p>
+<p style="font-size:.82rem">↑ Để hiểu đoạn này bạn phải biết trước: O(T²), JSON patch, sufficient statistic, ReAct… Đó là chỗ tốn sức.</p>
+</div>
+
+<div class="after">
+<span class="lab a">Sau · kiểu mới</span>
+
+<p class="analogy">💡 <b>Câu chốt:</b> Thay vì bắt AI đọc lại <b>cả cuốn nhật ký</b> ở mỗi bước, chỉ cho nó nhìn <b>một tấm thẻ trạng thái</b> luôn được cập nhật. Nhẹ hơn ~16 lần mà lại chính xác hơn.</p>
+
+<p class="analogy">Hãy tưởng tượng mỗi sáng thức dậy, để biết mình đang làm gì bạn phải <b>đọc lại toàn bộ nhật ký cả đời</b>. Càng sống lâu, cuốn nhật ký càng dày, đọc càng lâu — mà 99% là chi tiết không cần. Cách khác: giữ <b>một tấm thẻ nhỏ</b> ghi “đang ở đâu, cần làm gì tiếp”, mỗi tối cập nhật vài dòng. Đó chính là SKILL.state: vứt nhật ký, giữ tấm thẻ.</p>
+<p class="caveat">(Nói cho chính xác: tấm thẻ ở đây là một <b>object JSON</b> — một khối dữ liệu có cấu trúc gồm nhiều cặp “tên: giá trị”, ví dụ <code>{"đang_làm": "xếp kho", "còn_lại": 12}</code>.)</p>
+
+<figure>
+<svg viewBox="0 0 640 300" role="img" aria-label="So sánh: cách cũ cho model đọc lại toàn bộ lịch sử mỗi bước (36362 token, đúng 0.84); SKILL.state chỉ cho model đọc một thẻ trạng thái nhỏ cộng quan sát mới nhất (1905 token, đúng 0.94)">
+  <text x="150" y="22" text-anchor="middle" font-size="13" font-weight="700" style="fill:var(--muted)">CÁCH CŨ — đọc lại cả nhật ký</text>
+  <text x="490" y="22" text-anchor="middle" font-size="13" font-weight="700" style="fill:var(--accent)">SKILL.state — chỉ đọc tấm thẻ</text>
+  <line x1="320" y1="40" x2="320" y2="285" style="stroke:var(--line)" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <!-- LEFT: tall history stack -->
+  <rect x="35" y="55" width="95" height="170" rx="5" fill="none" style="stroke:var(--muted)" stroke-width="1.6"/>
+  <line x1="47" y1="72" x2="118" y2="72" style="stroke:var(--muted)" stroke-width="1.4"/>
+  <line x1="47" y1="88" x2="118" y2="88" style="stroke:var(--muted)" stroke-width="1.4"/>
+  <line x1="47" y1="104" x2="118" y2="104" style="stroke:var(--muted)" stroke-width="1.4"/>
+  <line x1="47" y1="120" x2="118" y2="120" style="stroke:var(--muted)" stroke-width="1.4"/>
+  <line x1="47" y1="136" x2="118" y2="136" style="stroke:var(--muted)" stroke-width="1.4"/>
+  <line x1="47" y1="152" x2="118" y2="152" style="stroke:var(--muted)" stroke-width="1.4"/>
+  <line x1="47" y1="168" x2="118" y2="168" style="stroke:var(--muted)" stroke-width="1.4"/>
+  <text x="82" y="192" text-anchor="middle" font-size="11" style="fill:var(--muted)">bước 1 … bước T</text>
+  <text x="82" y="208" text-anchor="middle" font-size="11" style="fill:var(--muted)">(dày dần)</text>
+  <line x1="130" y1="140" x2="168" y2="140" style="stroke:var(--muted)" stroke-width="1.6" marker-end="url(#am)"/>
+  <rect x="170" y="118" width="78" height="44" rx="6" fill="none" style="stroke:var(--muted)" stroke-width="1.6"/>
+  <text x="209" y="145" text-anchor="middle" font-size="12" style="fill:var(--muted)">Model</text>
+  <text x="150" y="258" text-anchor="middle" font-size="13" font-weight="700" style="fill:var(--muted)">36.362 token / bước</text>
+  <text x="150" y="278" text-anchor="middle" font-size="12" style="fill:var(--muted)">Đúng 0,84</text>
+  <!-- RIGHT: small card + newest obs -->
+  <rect x="360" y="70" width="105" height="40" rx="6" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.8"/>
+  <text x="412" y="94" text-anchor="middle" font-size="12" style="fill:var(--accent)" font-weight="600">Thẻ trạng thái</text>
+  <rect x="360" y="122" width="105" height="34" rx="6" fill="none" style="stroke:var(--muted)" stroke-width="1.5"/>
+  <text x="412" y="143" text-anchor="middle" font-size="11.5" style="fill:var(--ink)">việc mới nhất</text>
+  <line x1="465" y1="90" x2="500" y2="128" style="stroke:var(--accent)" stroke-width="1.6" marker-end="url(#aa)"/>
+  <line x1="465" y1="139" x2="500" y2="139" style="stroke:var(--muted)" stroke-width="1.6" marker-end="url(#am)"/>
+  <rect x="502" y="117" width="78" height="44" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="1.8"/>
+  <text x="541" y="144" text-anchor="middle" font-size="12" style="fill:var(--accent)">Model</text>
+  <text x="490" y="258" text-anchor="middle" font-size="13" font-weight="700" style="fill:var(--accent)">1.905 token / bước</text>
+  <text x="490" y="278" text-anchor="middle" font-size="12" style="fill:var(--accent)">Đúng 0,94</text>
+  <defs>
+    <marker id="am" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 7 3, 0 6" style="fill:var(--muted)"/></marker>
+    <marker id="aa" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 7 3, 0 6" style="fill:var(--accent)"/></marker>
+  </defs>
+</svg>
+<figcaption>Cái khác nhau nằm ở <b>thứ model phải đọc mỗi bước</b>: cả chồng lịch sử dày dần, hay một tấm thẻ nhỏ cố định. Ít chữ để đọc → rẻ hơn <b>và</b> đúng hơn.</figcaption>
+</figure>
+
+<p><b>Vì sao ít token mà lại đúng HƠN?</b> Vì nhật ký dày làm model “ngợp” — thông tin cần thiết bị chôn giữa hàng nghìn dòng cũ. Tấm thẻ chỉ chứa thứ đang cần, nên model không lạc.</p>
+
+<div class="num">Prompt tụt từ <b>36.362 → 1.905 token</b> mỗi bước. Độ chính xác <b>0,84 → 0,94</b>. Tính cả bài: dùng ít hơn <b>16 lần</b> tổng token so với cách nối lịch sử.</div>
+
+<details><summary>Muốn sâu hơn: “O(T²)” nghĩa là gì, và khi nào cách này hỏng</summary>
+<p>Nối lịch sử: bước T phải đọc lại cả T bước trước, nên tổng công sức tăng theo <b>bình phương</b> số bước (T×T = O(T²)) — gấp đôi số bước thì tốn gấp bốn. Tấm thẻ: mỗi bước đọc lượng cố định, nên chỉ tăng tuyến tính. <b>Khi nào hỏng:</b> nếu tấm thẻ lỡ bỏ sót một chi tiết sẽ cần sau (như quên ghi “khách dị ứng tôm”), thì mất luôn — vì nhật ký đã vứt. Paper gọi giả định “thẻ chứa đủ mọi thứ cần” là <i>sufficient statistic</i>. Mô hình nhỏ (Gemma-4-31B) hay mắc lỗi “ghi đè thẻ quá sớm” (68% lỗi).</p>
+</details>
+
+<div class="rel"><b>→ Với bạn:</b> đây là một biến “harness” mà <b>verifiable-eval</b> phải cố định khi so model — cùng một model, để nó nối lịch sử hay giữ thẻ trạng thái sẽ ra điểm rất khác. Cũng nối thẳng câu hỏi “subtract/fixed-size context” của <b>rondo</b>.</div>
+</div>
+</div>
+
+<!-- ===================== PAPER 2 ===================== -->
+<div class="paper">
+<h2>Paper 2 — Trace as State</h2>
+
+<div class="before">
+<span class="lab b">Trước · kiểu cũ</span>
+<p>Z.ai + Tsinghua. Transformer nhân quả: state phát hiện muộn không thể dẫn dắt phần đọc đã xảy ra. Hai lượt — lượt hai đặt trace <b>trước</b> context dài (<code>[T, x, q]</code>) thay vì nối sau (<code>[x, T, q]</code>). Đối chứng là chính trace đó nối sau, nên chênh lệch thuần do vị trí. GraphWalks 43,0% → 81,8%.</p>
+<p style="font-size:.82rem">↑ Phải hiểu “transformer nhân quả”, ký hiệu [T,x,q], “đối chứng”… mới thấy được cái hay.</p>
+</div>
+
+<div class="after">
+<span class="lab a">Sau · kiểu mới</span>
+
+<p class="analogy">💡 <b>Câu chốt:</b> Cùng một “gợi ý suy luận”, chỉ cần <b>đặt nó TRƯỚC</b> đoạn văn dài thay vì sau, điểm nhảy từ 43% lên 82% — <b>không đụng gì tới model</b>.</p>
+
+<p class="analogy">Hãy tưởng tượng đọc một cuốn <b>truyện trinh thám</b>. Nếu ai đó nói cho bạn <b>“hung thủ là người làm vườn” TRƯỚC</b> khi đọc, bạn sẽ để ý mọi manh mối về người làm vườn ngay từ đầu. Nếu họ chỉ nói <b>SAU</b> khi bạn đọc xong — thì muộn rồi, bạn đâu đọc lại được. AI đọc chữ cũng <b>chỉ đi một chiều, trái sang phải, không ngoái lại</b>. Nên đặt gợi ý ở đầu thì nó đọc phần sau với sự chú ý đúng chỗ.</p>
+<p class="caveat">(Chính xác hơn: “gợi ý” = reasoning trace, các bước suy luận model tự sinh ở lượt 1; “không ngoái lại” = tính chất causal của transformer.)</p>
+
+<figure>
+<svg viewBox="0 0 640 250" role="img" aria-label="Cách cũ đặt gợi ý sau đoạn văn dài nên đoạn văn không thể dùng gợi ý, đạt 43 phần trăm; cách mới đặt gợi ý trước đoạn văn nên đoạn văn đọc có gợi ý dẫn đường, đạt 81.8 phần trăm">
+  <!-- Row 1: OLD -->
+  <text x="20" y="42" font-size="12.5" font-weight="700" style="fill:var(--muted)">CÁCH CŨ</text>
+  <rect x="95" y="24" width="230" height="38" rx="5" fill="none" style="stroke:var(--muted)" stroke-width="1.6"/>
+  <text x="210" y="48" text-anchor="middle" font-size="12.5" style="fill:var(--muted)">đoạn văn dài</text>
+  <rect x="333" y="24" width="120" height="38" rx="5" fill="none" style="stroke:var(--muted)" stroke-width="1.6"/>
+  <text x="393" y="48" text-anchor="middle" font-size="12.5" style="fill:var(--muted)">gợi ý</text>
+  <rect x="461" y="24" width="70" height="38" rx="5" fill="none" style="stroke:var(--muted)" stroke-width="1.6"/>
+  <text x="496" y="48" text-anchor="middle" font-size="12.5" style="fill:var(--muted)">hỏi</text>
+  <path d="M 360 66 Q 300 100 220 66" fill="none" style="stroke:var(--muted)" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#om)"/>
+  <text x="290" y="98" text-anchor="middle" font-size="11.5" style="fill:var(--warn)" font-weight="600">✗ muốn dùng gợi ý nhưng không ngoái lại được</text>
+  <text x="560" y="48" font-size="14" font-weight="700" style="fill:var(--muted)">43,0%</text>
+  <!-- Row 2: NEW -->
+  <text x="20" y="182" font-size="12.5" font-weight="700" style="fill:var(--accent)">CÁCH MỚI</text>
+  <rect x="95" y="164" width="120" height="38" rx="5" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.8"/>
+  <text x="155" y="188" text-anchor="middle" font-size="12.5" style="fill:var(--accent)" font-weight="600">gợi ý</text>
+  <rect x="223" y="164" width="230" height="38" rx="5" fill="none" style="stroke:var(--ink)" stroke-width="1.6"/>
+  <text x="338" y="188" text-anchor="middle" font-size="12.5" style="fill:var(--ink)">đoạn văn dài</text>
+  <rect x="461" y="164" width="70" height="38" rx="5" fill="none" style="stroke:var(--ink)" stroke-width="1.6"/>
+  <text x="496" y="188" text-anchor="middle" font-size="12.5" style="fill:var(--ink)">hỏi</text>
+  <path d="M 200 150 Q 300 120 400 150" fill="none" style="stroke:var(--accent)" stroke-width="1.8" marker-end="url(#oa)"/>
+  <text x="300" y="118" text-anchor="middle" font-size="11.5" style="fill:var(--accent)" font-weight="600">✓ đọc đoạn văn với gợi ý dẫn đường</text>
+  <text x="560" y="188" font-size="14" font-weight="700" style="fill:var(--accent)">81,8%</text>
+  <defs>
+    <marker id="om" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 7 3, 0 6" style="fill:var(--muted)"/></marker>
+    <marker id="oa" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 7 3, 0 6" style="fill:var(--accent)"/></marker>
+  </defs>
+</svg>
+<figcaption>AI đọc trái→phải và mỗi chữ chỉ “nhìn” được các chữ <b>bên trái</b> nó. Đặt gợi ý bên trái đoạn văn → đoạn văn nhìn thấy gợi ý. Đặt bên phải → không. Chỉ đổi chỗ, không đổi model.</figcaption>
+</figure>
+
+<div class="num">Cùng một gợi ý, chỉ đổi vị trí: GraphWalks <b>43,0% → 81,8%</b>. Để so cho công bằng, họ đối chiếu với đúng gợi ý đó nhưng đặt phía sau — nên khoảng cách này <b>chỉ do chỗ đặt</b>, không phải do gợi ý hay/dở.</div>
+
+<div class="rel"><b>→ Với bạn:</b> cùng họ ý tưởng với Paper 1 và với <b>rondo</b> — “đặt thông tin ở đâu trong context” là một cần gạt rẻ tiền mà mạnh; đáng thử trong eval của bạn như một biến điều khiển được.</div>
+</div>
+</div>
+
+<!-- ===================== GRADING ===================== -->
+<div class="paper">
+<h2>Mình tự chấm (thang sư phạm)</h2>
+<p>Chấm bản “SAU” theo 7 tiêu chí, có trích dẫn. Cột v1 là bản nháp đầu, v2 là sau khi sửa.</p>
+<table>
+<tr><th>Tiêu chí</th><th>v1</th><th>v2</th><th>Đã sửa gì (thật)</th></tr>
+<tr><td>Ví von chở đúng cơ chế</td><td class="g5">5</td><td class="g5">5</td><td>“nhật ký vs tấm thẻ”, “trinh thám nói trước hung thủ” — giữ nguyên.</td></tr>
+<tr><td>Sơ đồ hiện đúng trên mọi máy</td><td class="g3">3</td><td class="g5">5</td><td>v1 tô màu sơ đồ bằng kiểu mà Safari cũ (điện thoại) có thể không hiểu → mất màu/mất nét. v2 đổi sang cách CSS chuẩn, đã kiểm XML hợp lệ.</td></tr>
+<tr><td>Lời thường, cấp-3 hiểu</td><td class="g3">3</td><td class="g5">4</td><td>Bỏ chữ “gloss:” (tiếng Anh lọt vào); thêm ví dụ JSON cụ thể; đổi “đối chứng” → “so cho công bằng”.</td></tr>
+<tr><td>Tả trước, đặt tên sau</td><td class="g5">5</td><td class="g5">5</td><td>Nói “tấm thẻ”/“gợi ý” trước, gắn nhãn “JSON/reasoning trace” sau.</td></tr>
+<tr><td>Hiểu ý trong 15 giây</td><td class="g5">4</td><td class="g5">4</td><td>“Câu chốt” in đậm ngay đầu mỗi bài.</td></tr>
+<tr><td>Nói được “để làm gì”</td><td class="g5">5</td><td class="g5">5</td><td>Mục “→ Với bạn” nối verifiable-eval / rondo.</td></tr>
+<tr><td>Thời gian hiểu (ước lượng)</td><td class="g3">3</td><td class="g5">4</td><td>Ước bản cũ (dày chữ) ~4–5 phút/bài → bản mới ~1–1,5 phút nhờ ví von + sơ đồ.</td></tr>
+</table>
+<p style="font-size:.9rem;color:var(--muted)">Trung thực: “lời thường” và “15 giây” mình để <b>4/5</b>, chưa 5 — vẫn còn ít chỗ hơi kỹ thuật, và “thời gian hiểu” là mình tự ước chứ chưa đo trên bạn. <b>Chính bạn là thước đo cuối</b>: chỗ nào còn khó, chỉ mình, mình hạ tiếp.</p>
+</div>
+
+<div class="recipe" style="margin-top:2.4rem">
+<b>Nếu bạn thấy kiểu này dễ hơn hẳn:</b> mình sẽ (1) đưa 6 nhịp + “bắt buộc có ví von &amp; 1 sơ đồ” vào template &amp; prompt để <b>mọi digest hằng ngày từ nay tự viết kiểu này</b>; (2) viết lại vài bài cũ quan trọng nếu bạn muốn. Bạn chỉ cần nói “dùng kiểu mới”.
+</div>
+
+<footer>Thử nghiệm cách viết · 2026-09-13 · 2 bài viết lại (SKILL.state, Trace as State — cùng số 07/09). Mục tiêu tối ưu: thời gian bạn hiểu.</footer>
+</div>
+</body></html>
