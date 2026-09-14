@@ -26,6 +26,14 @@ h3{font-size:1.02rem;font-weight:700;margin:1.4rem 0 .3rem}
 .analogy{font-size:1.02rem;margin:.5rem 0 .2rem}
 .analogy b{color:var(--accent)}
 .caveat{font-size:.83rem;color:var(--muted);font-style:italic;margin:.15rem 0 .8rem}
+.orient{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem;margin:.2rem 0 1rem}
+.orient .ttl{font-weight:700;font-size:.95rem}
+.locator{display:flex;gap:.3rem;margin:.6rem 0 .5rem}
+.locator .seg{flex:1;text-align:center;font-size:.7rem;padding:.4rem .2rem;border-radius:5px;background:var(--surface);border:1px solid var(--line);color:var(--muted);line-height:1.25}
+.locator .seg.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
+.orient .facts{font-size:.9rem;margin:.3rem 0 0}
+.orient .facts div{margin:.28rem 0}
+.orient .facts b{color:var(--accent)}
 figure{margin:1.1rem 0;padding:1rem;background:var(--bg);border:1px solid var(--line);border-radius:8px}
 figure svg{display:block;max-width:100%;height:auto;margin:0 auto}
 figcaption{font-size:.85rem;color:var(--muted);margin-top:.7rem;text-align:center}
@@ -47,6 +55,7 @@ a{color:var(--accent)}
   <div class="kicker">AI Digest · Thử nghiệm cách viết</div>
   <h1>Viết lại cho dễ đọc: ví von + hình ảnh</h1>
   <div class="sub">Bạn nói một bài review tốn quá nhiều sức đọc. Đây là 2 bài viết lại theo cách mới — mục tiêu là <b>rút ngắn thời gian bạn hiểu</b>, không phải rút ngắn bài.</div>
+  <div class="sub" style="margin-top:.5rem"><b>Bản v3</b> (theo góp ý mới của bạn): thêm nhịp <b>“📍 Đây là gì”</b> ở đầu mỗi bài — trả lời <i>đây là loại gì, nằm ở tầng nào (huấn luyện / tinh chỉnh / bộ khung agent / prompt), cần train không, tên có gây nhầm không</i> — trước khi vào cơ chế.</div>
 </header>
 
 <div class="intro">
@@ -54,8 +63,9 @@ Cùng một nội dung, hai cách trình bày. Mỗi bài dưới đây có ph�
 </div>
 
 <div class="recipe">
-<b>Công thức “kiểu mới” cho mỗi paper (6 nhịp):</b>
+<b>Công thức “kiểu mới” cho mỗi paper (7 nhịp):</b>
 <ol>
+<li><b>📍 Định vị (mới)</b> — <i>trước khi giải thích</i>: đây là loại gì, nằm ở <b>tầng nào</b> (huấn luyện gốc / tinh chỉnh / bộ khung agent / prompt lúc chạy), dùng khi nào, có cần huấn luyện lại không. Gỡ luôn cái tên dễ gây nhầm.</li>
 <li><b>Câu chốt 1 dòng</b> — paper tìm ra gì, nói bằng lời thường, không thuật ngữ.</li>
 <li><b>Ví von đời thường</b> — một hình ảnh quen thuộc chở đúng cái ý cốt lõi.</li>
 <li><b>Một sơ đồ</b> — vẽ cái cơ chế / cái khác nhau, không phải trang trí.</li>
@@ -77,6 +87,21 @@ Cùng một nội dung, hai cách trình bày. Mỗi bài dưới đây có ph�
 
 <div class="after">
 <span class="lab a">Sau · kiểu mới</span>
+
+<div class="orient">
+<div class="ttl">📍 Đây là gì — định vị trước khi đọc</div>
+<div class="locator">
+  <span class="seg">Huấn luyện gốc<br>(pretrain)</span>
+  <span class="seg">Tinh chỉnh<br>(fine-tune)</span>
+  <span class="seg on">Bộ khung agent<br>(harness)</span>
+  <span class="seg">Prompt lúc chạy<br>(inference)</span>
+</div>
+<div class="facts">
+<div><b>Loại:</b> một cách quản lý “bộ nhớ làm việc” cho MỘT agent chạy nhiều bước — nằm ở tầng <b>bộ khung (harness)</b>, tức phần điều khiển vòng lặp của agent, không phải bản thân model.</div>
+<div><b>Cần gì:</b> KHÔNG huấn luyện lại, KHÔNG đụng trọng số model — chạy được với bất kỳ model nào qua API.</div>
+<div><b>Coi chừng cái tên:</b> có chữ “SKILL” nhưng đây <b>KHÔNG phải “agent skill”</b> (kỹ năng cắm vào agent). Nó là cách agent <b>ghi nhớ trạng thái</b> giữa các bước. Tên dễ gây nhầm — bản chất là <i>quản lý bộ nhớ/ngữ cảnh</i>.</div>
+</div>
+</div>
 
 <p class="analogy">💡 <b>Câu chốt:</b> Thay vì bắt AI đọc lại <b>cả cuốn nhật ký</b> ở mỗi bước, chỉ cho nó nhìn <b>một tấm thẻ trạng thái</b> luôn được cập nhật. Nhẹ hơn ~16 lần mà lại chính xác hơn.</p>
 
@@ -148,6 +173,21 @@ Cùng một nội dung, hai cách trình bày. Mỗi bài dưới đây có ph�
 <div class="after">
 <span class="lab a">Sau · kiểu mới</span>
 
+<div class="orient">
+<div class="ttl">📍 Đây là gì — định vị trước khi đọc</div>
+<div class="locator">
+  <span class="seg">Huấn luyện gốc<br>(pretrain)</span>
+  <span class="seg">Tinh chỉnh<br>(fine-tune)</span>
+  <span class="seg">Bộ khung agent<br>(harness)</span>
+  <span class="seg on">Prompt lúc chạy<br>(inference)</span>
+</div>
+<div class="facts">
+<div><b>Loại:</b> một mẹo <b>sắp xếp thứ tự trong prompt</b> cho bài đọc-hiểu văn bản dài — chỉ là <b>đặt phần nào trước, phần nào sau</b> khi nạp vào model lúc chạy.</div>
+<div><b>Cần gì:</b> KHÔNG huấn luyện lại, KHÔNG đổi model — chỉ đổi <b>chỗ đặt</b> trong prompt.</div>
+<div><b>Coi chừng cái tên:</b> “Trace as State” = coi <b>chuỗi suy luận</b> (trace, các bước AI tự nghĩ) như một “tấm biển chỉ đường” đặt ở đầu. KHÔNG phải bộ nhớ, KHÔNG phải training — chỉ là vị trí trong prompt.</div>
+</div>
+</div>
+
 <p class="analogy">💡 <b>Câu chốt:</b> Cùng một “gợi ý suy luận”, chỉ cần <b>đặt nó TRƯỚC</b> đoạn văn dài thay vì sau, điểm nhảy từ 43% lên 82% — <b>không đụng gì tới model</b>.</p>
 
 <p class="analogy">Hãy tưởng tượng đọc một cuốn <b>truyện trinh thám</b>. Nếu ai đó nói cho bạn <b>“hung thủ là người làm vườn” TRƯỚC</b> khi đọc, bạn sẽ để ý mọi manh mối về người làm vườn ngay từ đầu. Nếu họ chỉ nói <b>SAU</b> khi bạn đọc xong — thì muộn rồi, bạn đâu đọc lại được. AI đọc chữ cũng <b>chỉ đi một chiều, trái sang phải, không ngoái lại</b>. Nên đặt gợi ý ở đầu thì nó đọc phần sau với sự chú ý đúng chỗ.</p>
@@ -196,7 +236,8 @@ Cùng một nội dung, hai cách trình bày. Mỗi bài dưới đây có ph�
 <h2>Mình tự chấm (thang sư phạm)</h2>
 <p>Chấm bản “SAU” theo 7 tiêu chí, có trích dẫn. Cột v1 là bản nháp đầu, v2 là sau khi sửa.</p>
 <table>
-<tr><th>Tiêu chí</th><th>v1</th><th>v2</th><th>Đã sửa gì (thật)</th></tr>
+<tr><th>Tiêu chí</th><th>v2</th><th>nay (v3)</th><th>Đã sửa gì (thật)</th></tr>
+<tr><td>📍 <b>Định vị / bối cảnh</b> (loại gì, tầng nào)</td><td class="g3">2</td><td class="g5">5</td><td><b>Bạn chỉ ra bản trước THIẾU HẲN</b> — đọc tên “SKILL.state” không biết là skill / bộ nhớ / gì, ở tầng nào. Thêm khối “📍 Đây là gì” + thanh định vị pipeline + câu gỡ nhầm tên.</td></tr>
 <tr><td>Ví von chở đúng cơ chế</td><td class="g5">5</td><td class="g5">5</td><td>“nhật ký vs tấm thẻ”, “trinh thám nói trước hung thủ” — giữ nguyên.</td></tr>
 <tr><td>Sơ đồ hiện đúng trên mọi máy</td><td class="g3">3</td><td class="g5">5</td><td>v1 tô màu sơ đồ bằng kiểu mà Safari cũ (điện thoại) có thể không hiểu → mất màu/mất nét. v2 đổi sang cách CSS chuẩn, đã kiểm XML hợp lệ.</td></tr>
 <tr><td>Lời thường, cấp-3 hiểu</td><td class="g3">3</td><td class="g5">4</td><td>Bỏ chữ “gloss:” (tiếng Anh lọt vào); thêm ví dụ JSON cụ thể; đổi “đối chứng” → “so cho công bằng”.</td></tr>
