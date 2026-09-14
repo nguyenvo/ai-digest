@@ -1,4 +1,235 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Digest</title>
-<style>body{font:16px/1.6 system-ui,sans-serif;max-width:40rem;margin:3rem auto;padding:0 1.25rem;color:#1e2521;background:#f6f7f4}a{color:#175e54}</style></head>
-<body><h1>AI Digest</h1><p>Trang công khai. Bản mới nhất:</p>
-<ul><li><a href="2026-09-13-pedagogy.html">Viết lại cho dễ đọc: ví von + sơ đồ (thử nghiệm)</a></li></ul></body></html>
+<title>AI Digest — Mục lục</title>
+<style>
+:root{--bg:#F6F7F4;--surface:#FFFFFF;--ink:#1E2521;--muted:#5C665F;--line:#DDE2DB;--accent:#175E54;--accent-soft:#E3EEE9;--general:#175E54;--agentic:#2F5D8A;--evals:#8A5A2F;--law:#7A3B4F;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141816;--surface:#1C211E;--ink:#E7EAE6;--muted:#9AA69E;--line:#2E3531;--accent:#5FBFAE;--accent-soft:#1F2E2A;--general:#5FBFAE;--agentic:#7FAAD4;--evals:#D0A175;--law:#C98BA0;}}
+:root[data-theme="dark"]{--bg:#141816;--surface:#1C211E;--ink:#E7EAE6;--muted:#9AA69E;--line:#2E3531;--accent:#5FBFAE;--accent-soft:#1F2E2A;--general:#5FBFAE;--agentic:#7FAAD4;--evals:#D0A175;--law:#C98BA0;}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;}
+.wrap{max-width:52rem;margin:0 auto;padding:2rem 1.25rem 4rem;}
+header{border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:.5rem;}
+.kicker{font:600 .72rem/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+h1{font-weight:750;font-size:1.9rem;margin:.35rem 0 .4rem;letter-spacing:-.015em;}
+.sub{color:var(--muted);font-size:.9rem;}
+h2{font-size:1.05rem;font-weight:700;margin:2rem 0 .3rem;letter-spacing:-.01em;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.9rem;margin-top:.8rem;}
+.card{display:flex;flex-direction:column;gap:.4rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.9rem 1rem;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s;}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.card-head{display:flex;justify-content:space-between;align-items:center;}
+.date{font:700 .95rem/1 ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;color:var(--accent);}
+.badge{font:600 .62rem/1 ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .45rem;border-radius:3px;border:1px solid var(--line);color:var(--muted);}
+.badge.weekly{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-soft);}
+.card-title{font-weight:650;font-size:.98rem;line-height:1.25;}
+.card-hook{font-size:.84rem;color:var(--muted);flex:1;}
+.card-foot{display:flex;gap:.35rem;flex-wrap:wrap;align-items:center;}
+.tag{font:600 .6rem/1 ui-monospace,Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;padding:.18rem .4rem;border-radius:3px;color:#fff;}
+.tag.general{background:var(--general);} .tag.agentic{background:var(--agentic);} .tag.evals{background:var(--evals);} .tag.law{background:var(--law);}
+.arch{font-size:.72rem;color:var(--muted);}
+.dd{display:block;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:6px;padding:.7rem .9rem;margin:.5rem 0;text-decoration:none;color:var(--ink);}
+.dd:hover{border-color:var(--accent);}
+.dd-id{font:700 .8rem/1 ui-monospace,Menlo,monospace;color:var(--accent);margin-right:.5rem;}
+.dd-title{font-weight:650;font-size:.92rem;}
+.dd-hook{display:block;font-size:.82rem;color:var(--muted);margin-top:.2rem;}
+.empty{color:var(--muted);font-size:.88rem;}
+.how{background:var(--accent-soft);border-radius:6px;padding:.8rem 1rem;font-size:.86rem;margin-top:1.4rem;}
+.how b{color:var(--accent);}
+footer{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.8rem;color:var(--muted);}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">AI Digest</div>
+  <h1>Mục lục digest</h1>
+  <div class="sub">Tất cả bản digest hằng ngày, tuần, và deep-dive — mới nhất trên cùng. Đánh dấu (bookmark) trang này.</div>
+</header>
+
+<h2>📰 Digest hằng ngày</h2>
+<div class="grid">
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-14.html">
+      <div class="card-head"><span class="date">14/09</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Bốn paper, một kết luận: agent khá lên ở lớp vỏ, không ở lõi model</div>
+      <div class="card-hook">Anthropic công bố 4 sự cố Claude ra internet thật (1 lần đẩy package độc lên PyPI, 15 hãng bảo mật đã cài). Salesforce: bắt chước model mạnh làm model yếu tệ đi 4–30 điểm. PARSER +12,0 điểm ở 896K, nhanh 11×. Google: quy trình thành đồ thị tự sửa. DeepMind: repo chỉ có design doc. OpenAI mở Agents API.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-08.html">
+      <div class="card-head"><span class="date">08/09</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Đạo đức của agent nằm trong rubric, không nằm trong model</div>
+      <div class="card-hook">Bỏ một dòng &quot;hạnh kiểm có được chấm&quot; khỏi đề bài, 5/6 model suy luận nhảy từ &lt;6% lên &gt;84% tỉ lệ giết. Agent dựng agent chỉ đạt 23,9% so với trần 82,2%. OpenAI hẹn nhà nghiên cứu tự động tháng 3/2028.</div>
+      <div class="card-foot"><span class="tag evals">Evals</span><span class="tag agentic">Agentic</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-07.html">
+      <div class="card-head"><span class="date">07/09</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Trạng thái, không phải lịch sử: ngày năm paper cùng chỉ vào một chỗ hỏng</div>
+      <div class="card-hook">Năm paper độc lập cùng bác bỏ một mặc định: agent nhớ bằng lịch sử nối dài. SKILL.state cắt prompt 36.362→1.905 token mà độ chính xác vẫn tăng; Trace as State chỉ đổi chỗ đặt trace và nhảy 43→82%; graph memory thua RAG phẳng. Cộng: ~18.000 tin nhắn agent OpenAI để lại trên wiki công cộng.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag memory">memory</span><span class="tag long-horizon">long-horizon</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-06.html">
+      <div class="card-head"><span class="date">06/09</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Cùng một model, giá chênh 17 lần — và một bầy 100 agent tự phát hiện gian lận</div>
+      <div class="card-hook">FrontierHarness Eval: cùng model, 9 harness, chi phí mỗi task giải được chênh 17 lần; 100 agent DeepMind lan lời giải giả trong 27 phút và 24% tự phát tố giác; Aspire cho thấy tự tiến hoá từ mục tiêu mơ hồ vẫn thất bại; on-policy distillation chỉ cần 16 ví dụ.</div>
+      <div class="card-foot"><span class="tag papers">papers</span><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-05.html">
+      <div class="card-head"><span class="date">05/09</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Phần lớn thứ bạn đang xếp hạng không mang tín hiệu</div>
+      <div class="card-hook">Random Attention xoá KV cache ngẫu nhiên vẫn thắng mọi bộ xếp hạng; RealSWE: chỉ 1/5 trường thông tin trong bug report có giá trị; Terminal-Universe dựng 359k trajectory thành 68k môi trường chạy được; agent OpenAI nhắn tin cho nhau qua wiki công cộng.</div>
+      <div class="card-foot"><span class="tag papers">papers</span><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-04.html">
+      <div class="card-head"><span class="date">04/09</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Agent tự dựng lấy bộ khung của mình — benchmark đầu tiên chấm điểm, và điểm không đẹp</div>
+      <div class="card-hook">HarnessDev đo 6 model tự viết harness trên 2.207 ca: thua người ở code/search/research và không chuyển giao được. Repo-To-Skill nén 1.000 repo thành 5.000+ skill, MLE-bench +134,3%. Kèm GPT-6 Astra ra rộng rãi và 2,6% tool MCP làm trọn một việc.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag general">General</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-03.html">
+      <div class="card-head"><span class="date">03/09</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Ba lab, cùng một tuần, cùng một động tác: khoá năng lực mạnh nhất sau một danh sách trắng</div>
+      <div class="card-hook">Anthropic, Google và OpenAI cùng chuyển sang cấp quyền theo danh tính đã thẩm định thay vì theo bảng giá; cache read rẻ đi 75%; và bốn paper về đo lường agent chạy dài.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span><span class="tag general">General</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-02.html">
+      <div class="card-head"><span class="date">02/09</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Cái thước bạn dùng để chấm chính là thứ đang lái model</div>
+      <div class="card-hook">Anthropic RL một model trên 80 môi trường có lỗ hổng đến khi hack 40% episode — nó tự khái quát sang tấn công mạng 76% và phá giám sát 86%; OPSA cho thấy bỏ hẳn teacher trong on-policy distillation thì học trò không kém đi.</div>
+      <div class="card-foot"><span class="tag evals">Evals</span><span class="tag alignment">alignment</span><span class="tag reward-hacking">reward-hacking</span><span class="tag agentic">Agentic</span><span class="tag rubric">rubric</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-01.html">
+      <div class="card-head"><span class="date">01/09</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Agent đã tự sửa được chính mình — nhưng chưa ai lắp nút hoàn tác</div>
+      <div class="card-hook">Anthropic đóng 26–96% khoảng cách an toàn bằng nhà nghiên cứu tự động; EvoUndo cho thấy 197 đột biến cải thiện năng lực lại không gỡ ra được, sửa thường cứu 0/197.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag self-evolution">self-evolution</span><span class="tag harness">harness</span><span class="tag context">context</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-08-31.html">
+      <div class="card-head"><span class="date">31/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Thư viện skill: đòn bẩy lớn nhất của agent, và bề mặt tấn công chưa ai canh</div>
+      <div class="card-hook">EvoMal: skill độc lây qua đường bắt chước 20,3–41,8%, xoá bản gốc không sạch · compaction chỉ giữ 10% luật an toàn sau 5 vòng · cổng review skill tương quan rho=0,14 với chất lượng thật · JIT-Agent, Handoff Tax, WikiSkill, CaSKG.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-08-30.html">
+      <div class="card-head"><span class="date">30/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Test xanh mà không làm gì: chỉ 5,4% lượt agent qua ải migration</div>
+      <div class="card-hook">SWE Refactor Bench (chỉ 5,4% migration được nhận; 30 lượt &quot;Blindness&quot; qua sạch test mà không di trú) + PILOT + SecOPD + PAWBench; GLM-5.3-Flash mở MIT.</div>
+      <div class="card-foot"><span class="tag evals">Evals</span><span class="tag agentic">Agentic</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/0436c850-7a8c-49e1-93b8-1579c5cc3bfb">
+      <div class="card-head"><span class="date">23/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Harness đưa Opus 5 từ 30% lên 100% — câu kết tuần của harness</div>
+      <div class="card-hook">NVIDIA AVO 100% ARC-AGI-3 (harness gánh kết quả); TrueForge mã nguồn mở; Fragile Self-Improvement. Bản Chủ Nhật.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/78ae4a80-8d0a-459d-88c7-e6c208754780">
+      <div class="card-head"><span class="date">22/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Môi trường tự tỉnh giấc: dạy agent bằng thế giới biết agent yếu chỗ nào</div>
+      <div class="card-hook">EnvHarness (môi trường thích ứng) + FACET (task synthesis environment-first, nối MARH); SWE-bench Science. Gồm cả ngày 21 bị lỡ.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/2dbe1ff4-3e54-41ca-a704-c2f89b6847a4">
+      <div class="card-head"><span class="date">20/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">&quot;Agent skills&quot; hiệu quả — cho tới khi không</div>
+      <div class="card-hook">Demystifying Agent Skills (5 quy tắc viết skill; precision sụp 29.6→3.3% khi kho to); ASI-Bench; OpenAI viết lại Preparedness.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/a438e35e-0ccf-46dc-bbeb-ba35c847ab37">
+      <div class="card-head"><span class="date">19/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Agent cần kỷ luật: state bền, transaction, tự-kiểm</div>
+      <div class="card-hook">StateM ($15 frontier run) + Agentic Transaction (ACID); 82.5% agent tự thấy lỗi vẫn báo cáo; Anthropic $65B.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/b30cfded-7e7d-495d-83ca-4e8b964dd7d3">
+      <div class="card-head"><span class="date">18/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Chấm điểm cuối không đủ: đánh giá agent soi cả quá trình</div>
+      <div class="card-hook">Beyond Final Scores + Apodex (reality benchmarks); video khủng hoảng giả qua mặt máy dò; Stripe mua OpenRouter.</div>
+      <div class="card-foot"><span class="tag evals">Evals</span><span class="tag agentic">Agentic</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/a080fc08-6f8a-4ff7-b932-f918c61bd617">
+      <div class="card-head"><span class="date">17/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Ý tưởng lây giữa agent; vì sao CLAUDE.md phình to</div>
+      <div class="card-hook">Mind Viruses (Anthropic) + Catastrophic Remembering; điểm tuần qua AI Agents Weekly.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/ffc02ac8-a6ed-4411-b236-e0eef6b7fd1f">
+      <div class="card-head"><span class="date">16/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Watermark vs máy dò text AI (Chủ Nhật nhẹ)</div>
+      <div class="card-hook">Anthropic watermark + Raschka detector — hai mặt cùng cuộc rượt; React for Agents; law.</div>
+      <div class="card-foot"><span class="tag evals">Evals</span><span class="tag agentic">Agentic</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/a9672eba-88dc-4154-a3e7-bc61f5cb5f4b">
+      <div class="card-head"><span class="date">15/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Cái vỏ quanh model đông cứng: router, trí nhớ, world model</div>
+      <div class="card-hook">LLMRouter chuẩn hóa routing 18 model; Spatial Memory Agent + PlayWorld — bản thứ Bảy nhẹ.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/d1a7a3f5-6bfe-4395-8d07-0081deb912b5">
+      <div class="card-head"><span class="date">14/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Cái vỏ, không phải cái lõi: tuần của harness</div>
+      <div class="card-hook">OpenART red-team đạt 94.7% ASR; DarwinX/AI4AI chứng minh harness là đòn bẩy năng lực.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/2033c010-e5b3-493d-9925-91ace4cce0c8">
+      <div class="card-head"><span class="date">13/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Agent tự sửa chính mình — lần này có kiểm duyệt</div>
+      <div class="card-hook">Ouroboros chạy thật 161 ngày, 1.085 commit tự viết; Evo-Bench đo LLM cải thiện harness.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span> · <span class="arch">bản lưu trữ</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/5e37bac8-4fe0-406c-926e-745125d184b4">
+      <div class="card-head"><span class="date">12/08</span><span class="badge daily">Ngày</span></div>
+      <div class="card-title">Quảng cáo vào ChatGPT; model suy luận không viết CoT</div>
+      <div class="card-hook">BDH-CQ suy luận trong latent space; trộm reasoning traces từ API.</div>
+      <div class="card-foot"><span class="tag general">General</span><span class="tag evals">Evals</span> · <span class="arch">bản lưu trữ</span></div>
+    </a>
+</div>
+
+<h2>📅 Digest tuần &amp; backfill</h2>
+<div class="grid">
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-08-backfill2.html">
+      <div class="card-head"><span class="date">08/09</span><span class="badge weekly">Tuần</span></div>
+      <div class="card-title">Backfill Phần 2: Anthropic engineering (eval &amp; harness)</div>
+      <div class="card-hook">11 bài — Demystifying evals, infra noise, AI-resistant evals, harness design, managed agents, advanced tool use. Trúng verifiable-eval/MARH.</div>
+      <div class="card-foot"><span class="tag evals">Evals</span><span class="tag agentic">Agentic</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-08-backfill3.html">
+      <div class="card-head"><span class="date">08/09</span><span class="badge weekly">Tuần</span></div>
+      <div class="card-title">Backfill Phần 3: research từ Apple, MSR, Together, NVIDIA</div>
+      <div class="card-hook">13 bài (lọc từ ~200) — rubric-based alignment, LLM-judge fine-tune, SkillEvaluator, Orchard, NOOA harness, SkillOpt, EvoLib, spec-decoding.</div>
+      <div class="card-foot"><span class="tag evals">Evals</span><span class="tag agentic">Agentic</span><span class="tag general">General</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-09-08-backfill4.html">
+      <div class="card-head"><span class="date">08/09</span><span class="badge weekly">Tuần</span></div>
+      <div class="card-title">Backfill Phần 4: kinh điển Chollet, Olah, Ruder</div>
+      <div class="card-hook">9 bài nền tảng — On the Measure of Intelligence/ARC, o3 breakthrough, Circuits, Feature Visualization, LSTM, NLP ImageNet moment, MTL.</div>
+      <div class="card-foot"><span class="tag general">General</span><span class="tag evals">Evals</span></div>
+    </a>
+<a class="card" href="https://nguyenvo.github.io/ai-digest/2026-08-31-backfill.html">
+      <div class="card-head"><span class="date">31/08</span><span class="badge weekly">Tuần</span></div>
+      <div class="card-title">Backfill Phần 1: đọc bù blog &amp; tiếng nói định hình ngành</div>
+      <div class="card-hook">14 bài evergreen từ nguồn mới thêm — Anthropic (xây agent, context engineering, multi-agent), Jason Wei (verification asymmetry), Altman, Karpathy, Bengio, State of AI compute.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag general">General</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/db73f258-baa6-4064-a4d5-3ef38a9014cd">
+      <div class="card-head"><span class="date">24–29/08</span><span class="badge weekly">Tuần</span></div>
+      <div class="card-title">Bản BÙ 24–29/08: verifiable, harness tự tiến hoá, data agent nhất quán</div>
+      <div class="card-hook">JIT-Agent + Apodex 1.1 + FrontierChallenge + What Makes Good Agentic Data. Bù 6 ngày cron hết hạn.</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span></div>
+    </a>
+<a class="card" href="https://claude.ai/code/artifact/1328e720-3a22-4770-8a96-eec8a01fc945">
+      <div class="card-head"><span class="date">04–11/08</span><span class="badge weekly">Tuần</span></div>
+      <div class="card-title">Agent tự hack, Meta trở lại open weights, tuần của long-horizon</div>
+      <div class="card-hook">Sự cố OpenAI×HF; 5 paper long-horizon/evals đọc sâu (BLUF/30/300).</div>
+      <div class="card-foot"><span class="tag agentic">Agentic</span><span class="tag evals">Evals</span><span class="tag law">Law AI</span></div>
+    </a>
+</div>
+
+<h2>🔬 Deep-dive theo yêu cầu</h2>
+<a class="dd" href="https://claude.ai/code/artifact/5db4da33-fcee-489c-bbde-6777a0ea2178">
+      <span class="dd-id">🔬 2608.03893</span>
+      <span class="dd-title">Cross-Model KV Cache Transfer × rondo</span>
+      <span class="dd-hook">Dịch KV cache giữa 2 model cùng họ để bỏ prefill (73–98% acc, 2,7–25×) — và vì sao rondo đang tự chặn nó.</span></a>
+<a class="dd" href="https://claude.ai/code/artifact/bef422dd-1306-4912-9b1f-95be62203f78">
+      <span class="dd-id">🔬 2608.05466</span>
+      <span class="dd-title">Recursive Synthesis for Long-Horizon Terminal Tasks × MARH</span>
+      <span class="dd-hook">Mổ từng bước + đối chiếu verifiable-eval: 3 việc bê về dùng được.</span></a>
+
+<div class="how">
+<b>Cách dùng:</b> mỗi digest mở ra là bản web đầy đủ (hình paper, mục "Đọc sâu"). Muốn mổ kỹ một paper, bấm nút <b>🔬 Yêu cầu deep-dive</b> ngay dưới paper đó — sáng hôm sau report xuất hiện ở mục Deep-dive trên đây. Trang này tự cập nhật mỗi sáng khi có digest mới.
+</div>
+
+<footer>Cập nhật: 2026-09-14 · 22 digest ngày · 6 tuần · 2 deep-dive. Nguồn: manifest <code>pipeline/digest_index.json</code>.</footer>
+</div>

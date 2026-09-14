@@ -1,0 +1,144 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Digest — Backfill Phần 1: Blog &amp; Tiếng nói</title>
+<style>
+:root{--bg:#F6F7F4;--surface:#FFFFFF;--ink:#1E2521;--muted:#5C665F;--line:#DDE2DB;--accent:#175E54;--accent-soft:#E3EEE9;--agentic:#2F5D8A;--evals:#8A5A2F;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141816;--surface:#1C211E;--ink:#E7EAE6;--muted:#9AA69E;--line:#2E3531;--accent:#5FBFAE;--accent-soft:#1F2E2A;--agentic:#7FAAD4;--evals:#D0A175;}}
+:root[data-theme="dark"]{--bg:#141816;--surface:#1C211E;--ink:#E7EAE6;--muted:#9AA69E;--line:#2E3531;--accent:#5FBFAE;--accent-soft:#1F2E2A;--agentic:#7FAAD4;--evals:#D0A175;}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;font:16px/1.62 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif}
+.wrap{max-width:50rem;margin:0 auto;padding:2rem 1.25rem 4rem}
+header{border-bottom:2px solid var(--ink);padding-bottom:1.1rem;margin-bottom:1.4rem}
+.kicker{font:600 .72rem/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-weight:760;font-size:1.75rem;margin:.4rem 0 .5rem;letter-spacing:-.015em;line-height:1.2}
+.sub{color:var(--muted);font-size:.95rem}
+.intro{background:var(--accent-soft);border-radius:8px;padding:1rem 1.15rem;margin:1.2rem 0 1.8rem;font-size:.95rem}
+.intro b{color:var(--accent)}
+h2{font-size:1.15rem;font-weight:730;margin:2.4rem 0 .3rem;letter-spacing:-.01em;border-top:2px solid var(--ink);padding-top:1rem}
+h2 .cnt{font:600 .7rem/1 ui-monospace,Menlo,monospace;color:var(--muted);letter-spacing:.05em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1rem 1.15rem;margin:1rem 0}
+.card .top{display:flex;justify-content:space-between;gap:.6rem;align-items:baseline;flex-wrap:wrap}
+.card h3{margin:0;font-size:1.06rem;font-weight:680;line-height:1.3}
+.card h3 a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--accent-soft)}
+.card h3 a:hover{border-color:var(--accent)}
+.meta{font:600 .7rem/1.4 ui-monospace,Menlo,monospace;color:var(--muted);white-space:nowrap}
+.card p{margin:.6rem 0 0;font-size:.95rem}
+.rel{margin-top:.7rem;padding:.55rem .75rem;background:var(--accent-soft);border-radius:6px;font-size:.9rem}
+.rel b{color:var(--accent)}
+.tag{display:inline-block;font:600 .6rem/1 ui-monospace,Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;padding:.2rem .45rem;border-radius:3px;color:#fff;background:var(--accent);vertical-align:middle}
+.tag.ag{background:var(--agentic)}.tag.ev{background:var(--evals)}
+.next{background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:1rem 1.15rem;margin-top:2.4rem;font-size:.93rem}
+footer{margin-top:2.4rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.8rem;color:var(--muted)}
+a{color:var(--accent)}
+</style></head><body>
+<div class="wrap">
+<header>
+  <div class="kicker">AI Digest · Backfill Phần 1</div>
+  <h1>Đọc bù: blog &amp; tiếng nói định hình ngành</h1>
+  <div class="sub">14 bài evergreen đáng đọc nhất từ các nguồn vừa thêm — bạn chưa đọc, nay tóm gọn lại.</div>
+</header>
+
+<div class="intro">
+Đây là <b>bậc 1</b> của backfill blog (giống ladder backfill paper). Mình lọc từ ~310 bài lịch sử vừa kéo về, chọn 14 bài <b>evergreen, còn nguyên giá trị</b>, nhóm theo chủ đề, mỗi bài kèm 1 dòng <b>“→ Với bạn”</b> nối tới repo/ý tưởng của bạn khi hợp. Bài tin-tức-nhanh đã cũ thì bỏ. Cuối trang có danh sách bậc 2/3 để đào tiếp nếu thích.
+</div>
+
+<h2>🛠️ Anthropic — cẩm nang xây agent <span class="cnt">· 5 bài, canon</span></h2>
+
+<div class="card">
+  <div class="top"><h3><a href="https://www.anthropic.com/engineering/building-effective-agents">Building Effective Agents</a></h3><span class="meta">12/2024</span></div>
+  <p>Bài nền tảng phân biệt <b>“workflow”</b> (các bước LLM nối cứng, có kiểm soát) với <b>“agent”</b> (LLM tự quyết luồng + dùng tool trong vòng lặp). Thông điệp lõi: <b>đừng dùng agent khi workflow là đủ</b> — agent chỉ đáng khi tác vụ cần sự linh hoạt và quyết định theo ngữ cảnh mà bạn không thể liệt kê trước. Liệt kê 5 khối lắp ghép (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer) và nguyên tắc “đơn giản trước, chỉ thêm phức tạp khi đo được lợi ích”.</p>
+  <div class="rel"><b>→ Với bạn:</b> đây là khung từ vựng để nói về harness của MARH — phần lớn “agent” thực chất là workflow có 1–2 điểm ra quyết định; tách rõ hai loại giúp bạn biết chỗ nào cần verify (workflow) và chỗ nào cần eval hành vi (agent).</div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective Context Engineering for AI Agents</a></h3><span class="meta">09/2025 · <span class="tag ag">Agentic</span></span></div>
+  <p><b>Context engineering</b> (nuôi dưỡng tập token tối ưu suốt cả phiên) rộng hơn prompt engineering (viết chỉ dẫn cho một lượt). Vì <b>“context rot”</b> — model mất độ chính xác khi cửa sổ phình to — nên phải cắt gọt liên tục. 4 kỹ thuật: <b>(1) Compaction</b> — tóm tắt &amp; khởi tạo lại context khi gần đầy, giữ quyết định kiến trúc/bug chưa xong, bỏ output tool thừa; <b>(2) Note-taking</b> — agent ghi bộ nhớ ngoài (NOTES.md, to-do) rồi nạp lại khi cần; <b>(3) Sub-agent</b> — agent phụ làm việc trên context sạch, trả về bản tóm 1.000–2.000 token; <b>(4) Just-in-time retrieval</b> — giữ con trỏ nhẹ (path, query) và nạp dữ liệu lúc chạy thay vì tải sẵn hết.</p>
+  <div class="rel"><b>→ Với bạn:</b> khớp thẳng nghiên cứu context của rondo — cả 3 giả thuyết (subtract / latent / fixed-size) của bạn đều là biến thể của “chống context rot”. Bài này cho bạn 4 chiến thuật đã kiểm chứng trên Claude thật để đối chiếu.</div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://www.anthropic.com/engineering/multi-agent-research-system">How We Built Our Multi-Agent Research System</a></h3><span class="meta">06/2025</span></div>
+  <p>Kiến trúc <b>orchestrator–worker</b>: một “lead agent” chia câu hỏi nghiên cứu thành nhiều nhánh, giao cho các sub-agent chạy song song với context riêng, rồi tổng hợp. Anthropic báo cáo hệ multi-agent vượt single-agent lớn ở tác vụ tìm-kiếm-rộng, đổi lại tốn token gấp nhiều lần — nên chỉ đáng với bài toán “bề rộng” (duyệt nhiều nguồn) chứ không phải mọi việc. Nhiều bài học kỹ thuật: dạy lead agent cách <b>giao việc rõ ràng</b>, để sub-agent tự quyết số lần gọi tool, và đánh giá bằng end-state chứ không bám từng bước.</p>
+  <div class="rel"><b>→ Với bạn:</b> chính là mô hình MARH — bài xác nhận “đánh giá bằng end-state” và cảnh báo chi phí token, hai điều verifiable-eval cần cân.</div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://www.anthropic.com/engineering/writing-tools-for-agents">Writing Effective Tools for Agents — with Agents</a></h3><span class="meta">09/2025</span></div>
+  <p>Cách thiết kế tool cho agent: tên/tham số rõ, <b>ít chồng lấn chức năng</b> (tập tool mơ hồ khiến agent phân vân), trả về token gọn và “giàu tín hiệu”. Mẹo hay: dùng chính Claude để tự viết &amp; tinh chỉnh mô tả tool bằng cách cho nó thử dùng rồi sửa chỗ nó hiểu sai.</p>
+  <div class="rel"><b>→ Với bạn:</b> nếu verifiable-eval chấm cả “agent gọi tool đúng cách không”, đây là danh mục tiêu chí thiết kế tool để đối chiếu.</div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">Equipping Agents for the Real World with Agent Skills</a></h3><span class="meta">10/2025 · <span class="tag ag">Agentic</span></span></div>
+  <p>Giới thiệu <b>Agent Skills</b> — gói chỉ dẫn + script + tài nguyên đóng lại thành một “kỹ năng” agent nạp khi cần (chính là cơ chế skill bạn đang dùng trong Claude Code). Nêu nguyên tắc viết skill gọn, nạp đúng lúc, tránh phình context.</p>
+  <div class="rel"><b>→ Với bạn:</b> nối với digest 20/08 (“Demystifying Agent Skills”: precision sụp khi kho skill to) — đây là góc nhìn chính chủ của cơ chế đó.</div>
+</div>
+
+<h2>🧭 Tiếng nói lớn — tầm nhìn &amp; tư duy <span class="cnt">· 6 bài</span></h2>
+
+<div class="card">
+  <div class="top"><h3><a href="https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law">Asymmetry of Verification &amp; Verifier’s Law</a> — Jason Wei</h3><span class="meta">07/2025 · <span class="tag ev">Evals</span></span></div>
+  <p><b>Bất đối xứng xác minh:</b> nhiều việc <b>kiểm tra dễ hơn nhiều so với giải</b> (Sudoku, làm web, toán thi có đáp án) — nhưng có việc ngược lại (bài luận: viết dễ, fact-check khó) hoặc cân bằng (cộng số 900 chữ số). <b>Định luật của người xác minh:</b> <i>“độ dễ huấn luyện AI làm một việc tỉ lệ với độ dễ xác minh việc đó.”</i> 5 tính chất khiến một việc “train được”: (1) có chân lý khách quan, (2) xác minh nhanh, (3) xác minh mở rộng được theo lô, (4) nhiễu thấp (điểm kiểm-tra bám sát chất lượng thật), (5) phần thưởng liên tục (xếp hạng được các mức lời giải). Gần như mọi benchmark AI thành công đều thỏa (1)–(4).</p>
+  <div class="rel"><b>→ Với bạn:</b> đây gần như là <b>tuyên ngôn nền của verifiable-eval</b>. 5 tính chất chính là checklist để hỏi “task này có ‘verifiable’ đủ để chấm điểm/để RL không?”. Rất đáng đọc kỹ và trích thẳng vào thiết kế eval.</div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://www.jasonwei.net/blog/whats-left-for-humans">What’s Left for Humans?</a> — Jason Wei</h3><span class="meta">08/2026</span></div>
+  <p>Suy ngẫm: khi AI giỏi dần ở mọi việc “verify được”, phần còn lại cho con người dịch về đâu — đặt mục tiêu, chọn cái gì đáng làm, chịu trách nhiệm, và những việc mà bản thân “chất lượng” khó đo. Cặp đôi tự nhiên với bài verification ở trên (mặt kia của “jagged edge of intelligence”).</p>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://blog.samaltman.com/the-gentle-singularity">The Gentle Singularity</a> — Sam Altman</h3><span class="meta">06/2025</span></div>
+  <p>Luận điểm: điểm kỳ dị (singularity) sẽ đến <b>êm và dần</b> chứ không phải một cú nổ — năng lực dồn theo cấp số nhân nhưng đời sống thích nghi từng bước nên cảm giác “bình thường mới”. Bàn chi phí trí tuệ tiến về gần chi phí điện, và vòng lặp AI-giúp-làm-AI tăng tốc.</p>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://blog.samaltman.com/abundant-intelligence">Abundant Intelligence</a> — Sam Altman</h3><span class="meta">09/2025</span></div>
+  <p>Tầm nhìn “trí tuệ dồi dào như điện”: nếu chi phí một đơn vị trí tuệ đủ rẻ, nhu cầu gần như vô hạn, nên nút thắt dịch sang <b>năng lượng &amp; hạ tầng tính toán</b>. Đặt nền cho các cam kết xây cluster khổng lồ của OpenAI.</p>
+  <div class="rel"><b>→ Với bạn:</b> đọc cạnh “State of AI Compute Index” bên dưới — một bên là luận điểm, một bên là số liệu compute thực tế kiểm chứng.</div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="http://karpathy.github.io/2026/02/12/microgpt">microgpt</a> — Andrej Karpathy</h3><span class="meta">02/2026</span></div>
+  <p>Karpathy tiếp mạch “dạy từ số 0”: một GPT tối giản, đọc được từng dòng, để hiểu bản chất kiến trúc thay vì thư viện đồ sộ. Kiểu bài “xây lại để hiểu” đặc trưng của anh — vàng cho người muốn nắm cơ chế.</p>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://yoshuabengio.org/en/blog/introducing-lawzero">Introducing LawZero</a> — Yoshua Bengio</h3><span class="meta">06/2025</span></div>
+  <p>Bengio ra mắt <b>LawZero</b> — tổ chức phi lợi nhuận theo đuổi “Scientist AI”: AI được thiết kế để <b>hiểu &amp; giải thích thay vì hành động theo mục tiêu</b>, như một lớp an toàn giám sát các agent tự chủ. Đây là đặt cược nghiên cứu an toàn của một trong ba “bố già” deep learning.</p>
+</div>
+
+<h2>🔬 Anthropic Research — gần đây <span class="cnt">· 2 bài</span></h2>
+
+<div class="card">
+  <div class="top"><h3><a href="https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures">Automated Researchers Can Reliably Mitigate Alignment Failures</a></h3><span class="meta">08/2026 · <span class="tag ev">Evals</span></span></div>
+  <p>Cho Claude <b>tự làm nghiên cứu an toàn</b>: tự đọc tài liệu, đề xuất phương pháp + dataset, train model, thử cải thiện — có một agent giám sát chặn “ăn gian” (vd distill thẳng alignment của Claude vào model đích). Đo bằng <b>% khoảng-cách-an-toàn thu hẹp</b> trên 10 loại lỗi. Kết quả mạnh: đóng <b>26–96%</b> khoảng cách; riêng “deception” đạt <b>85%</b> (so với 20% của người trong 8 giờ); phương pháp <b>scale lên model to gấp 4,7×</b>; Sonnet 5 căn chỉnh một checkpoint Opus 4.8 sớm trong 60 giờ, ~2.000 ví dụ — hiệu quả ~15.000× so với quy trình sản xuất. Tác giả tự nhận hạn chế: các lỗi đo được còn “hẹp” so với thực tế, và cải thiện có thể <b>không bền</b> sau khi train thêm việc khác.</p>
+  <div class="rel"><b>→ Với bạn:</b> mẫu “agent tự chạy vòng nghiên cứu có giám sát” + đo bằng gap-closed rất gần tinh thần verifiable-eval; đặc biệt cái bẫy “giám sát để chặn shortcut” đáng bê về.</div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://www.anthropic.com/research/multiagent-systems">Patterns and Problems in Emerging Multiagent Systems</a></h3><span class="meta">08/2026 · <span class="tag ag">Agentic</span></span></div>
+  <p>Frontier Red Team soi các hệ nhiều-agent: những <b>lỗi mới nổi</b> khi agent tương tác (lan truyền lỗi/ý tưởng xấu, đồng thuận sai, khó truy trách nhiệm) — nối mạch “Mind Viruses” trong digest 17/08.</p>
+</div>
+
+<h2>📊 State of AI &amp; compute — Nathan Benaich / Air Street <span class="cnt">· 1 bài chốt (+2 gợi ý)</span></h2>
+
+<div class="card">
+  <div class="top"><h3><a href="https://press.airstreet.com/p/state-of-ai-compute-index-june-2026">State of AI Compute Index (v6, 06/2026)</a></h3><span class="meta">07/2026</span></div>
+  <p>Đo “bản đồ compute” qua trích dẫn chip trong paper + cụm GPU triển khai. Vài số đáng nhớ: NVIDIA chiếm <b>91%</b> trích dẫn (44.715); H100/H200 <b>+111%</b>, Blackwell <b>×4,5</b> nhưng còn nhỏ; Apple thành accelerator ngoài-NVIDIA được trích nhiều nhất (998). Cụm Hopper đã triển khai <b>460.904 GPU</b> (gấp &gt;11× đội A100); xAI Colossus 200.000 GPU, Meta GenAI 49.152. Grace-Blackwell mới deploy ~5%, còn 80% “mới công bố”. Hợp đồng compute: <b>OpenAI 26 GW</b> (10 NVIDIA + 16 non-NVIDIA), <b>Anthropic 6 GW</b>. Chốt: “CUDA vẫn thống trị paper, nhưng frontier lab đang đa dạng hoá nhà cung cấp”, và nút thắt thật đã chuyển từ số GPU sang <b>điện, làm mát, cấp phép, interconnect</b>.</p>
+  <div class="rel"><b>→ Với bạn:</b> đây là bộ số nền để hiểu vì sao các paper “harness/compute-efficiency” (KV cache, router, distillation) trong digest lại nóng — biên compute đang là ràng buộc số 1.</div>
+</div>
+<p style="font-size:.9rem;color:var(--muted);margin:.4rem 0 0">Cùng nguồn, đáng đọc tiếp nếu thích chủ đề khoa học-bằng-AI: <a href="https://press.airstreet.com/p/roberta-raileanu-scientific-discovery">Beyond hill climbing: path to superhuman scientific discovery</a> (02/07) · <a href="https://press.airstreet.com/p/ted-moskovitz-anthropic">Turning compute into intelligence</a> (09/07).</p>
+
+<div class="next">
+<b>Còn gì để đào tiếp (bậc 2/3) — bảo mình khi muốn:</b>
+<ul style="margin:.5rem 0 0;padding-left:1.2rem">
+<li><b>Bậc 2 — research paper của lab:</b> Apple ML (10 bài) &amp; Microsoft Research (10 bài) gần đây — nhiều bài trùng arXiv, mình sẽ lọc cái không trùng digest.</li>
+<li><b>Bậc 2 — Anthropic engineering còn lại:</b> ~15 bài nữa (Contextual Retrieval, “think” tool, Claude Code best practices, security…) chưa đưa vào phần 1.</li>
+<li><b>Bậc 3 — khối lượng lớn:</b> NVIDIA dev (100) &amp; Together (100) — chủ yếu tutorial hạ tầng; mình sẽ lọc mạnh theo chủ đề của bạn.</li>
+<li><b>Lịch sử sâu hơn RSS:</b> Chollet / Chris Olah / Ruder feed chỉ giữ bài mới; muốn bài kinh điển cũ hơn thì mình WebSearch theo tháng (như plan backfill paper).</li>
+</ul>
+</div>
+
+<footer>Backfill Phần 1 · 2026-08-31 · 14 bài từ nguồn mới thêm. Tự động lọc từ ~310 bài lịch sử trong state.db. Nguồn: blog/feed chính chủ, tóm tắt tiếng Việt.</footer>
+</div>
+</body></html>
