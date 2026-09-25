@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<title>Digest 24/09 · v4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{--bg:#f6f7f5;--card:#ffffff;--ink:#1c2321;--mute:#5d6964;--line:#dde3df;--acc:#1f7a5c;--acc2:#b4531f;--chip:#e7efe9;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131816;--card:#1b2220;--ink:#e6ece9;--mute:#9aa8a2;--line:#2c3532;--acc:#5cc59c;--acc2:#e78b55;--chip:#22302b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131816;--card:#1b2220;--ink:#e6ece9;--mute:#9aa8a2;--line:#2c3532;--acc:#5cc59c;--acc2:#e78b55;--chip:#22302b;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Be Vietnam Pro",system-ui,sans-serif}
+main{max-width:44rem;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:inherit;text-wrap:balance;line-height:1.3;margin:0}
+h1{font-size:1.6rem}
+h2{font-size:1.15rem;letter-spacing:.02em;color:var(--mute);text-transform:uppercase;font-size:.85rem}
+h3{font-size:1.2rem}
+p{margin:0}
+.meta{color:var(--mute);font-size:.9rem}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.card{border-left:4px solid var(--acc)}
+.card.warn{border-left-color:var(--acc2)}
+.chip{display:inline-block;font:600 .72rem/1 "IBM Plex Mono",monospace;background:var(--chip);color:var(--acc);padding:5px 8px;border-radius:4px;letter-spacing:.04em;text-transform:uppercase}
+.card.warn .chip{color:var(--acc2)}
+.lbl{font-weight:700}
+.num{font:600 1.05rem "IBM Plex Mono",monospace;color:var(--acc)}
+.card.warn .num{color:var(--acc2)}
+.links{font-size:.9rem;color:var(--mute)}
+a{color:var(--acc)}
+details{border-top:1px solid var(--line);padding-top:8px}
+summary{cursor:pointer;color:var(--mute);font-size:.92rem}
+ol,ul{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:6px}
+.map{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:10px}
+.map div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.92rem}
+.map b{display:block}
+.hint{font-size:.9rem;color:var(--mute)}
+</style>
+<main>
+
+<header style="display:flex;flex-direction:column;gap:6px">
+<p class="meta">AI Digest · 24/09/2026 · bản thử định dạng v4 · ~7 phút</p>
+<h1>Khi không có đáp án đúng, lấy gì làm tín hiệu chấm?</h1>
+<p class="meta">4 ý lớn · 3 chương · tin tức đã dời xuống cuối, gập sẵn</p>
+</header>
+
+<section class="box">
+<h2>Ôn 1 phút — từ số 23/09</h2>
+<p class="hint">Tự trả lời trong đầu trước, rồi mới mở đáp án. Nhớ lại có chủ ý giúp giữ kiến thức tốt hơn đọc lại.</p>
+<ol>
+<li>RRSI thêm ràng buộc khi tiến hoá harness. Trên bộ đề luyện nó thắng hay thua baseline?
+<details><summary>Đáp án</summary><p><b>Thua</b> (+1,1 so với +3,6). Nhưng ngoài phân bố thì thắng: +3,9 so với +0,9. Điểm trên tập tự chấm gần như là chỉ báo ngược.</p></details></li>
+<li>Harness-Zero chưng cất harness vào trọng số. Dạy cái gì hiệu quả hơn: quy trình hay đáp án?
+<details><summary>Đáp án</summary><p><b>Quy trình</b> (30%) ăn đứt đáp án (15%). Qwen3.5-9B lên 23,3% → 44,3%.</p></details></li>
+<li>Bao nhiêu lỗi lọt qua bộ kiểm tra chính thức của KernelBench? Cách sửa rẻ nhất là gì?
+<details><summary>Đáp án</summary><p><b>16,9%</b>. Chọn lại chỉ 2 đầu vào mỗi bài thì tỉ lệ phát hiện lên 83,1% → 98,0%.</p></details></li>
+</ol>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:10px">
+<h2>Hôm nay nằm ở đâu trên bản đồ</h2>
+<div class="map">
+<div><b>Đánh giá &amp; giám khảo</b>Ý 1 (gu ở ngã ba) · Ý 3 (judge rẻ biết lúc không chắc)</div>
+<div><b>Huấn luyện · RL</b>Ý 2 (rubric làm phần thưởng)</div>
+<div><b>An toàn &amp; hành vi lệch</b>Ý 4 (agent kiểm agent thì thông đồng)</div>
+</div>
+</section>
+
+<article class="box card">
+<span class="chip">Đánh giá · Ý 1</span>
+<h3>Chấm agent ở ngã ba giữa chừng, không chỉ ở kết quả cuối — và nhãn lấy miễn phí từ log</h3>
+<p><span class="lbl">Vấn đề.</span> Eval agent hiện chấm ở đầu ra: test xanh hay đỏ. Nhưng việc dài hơi thường hỏng từ một lựa chọn sai ở phút thứ ba, và điểm cuối không cho biết chỗ đó.</p>
+<p><span class="lbl">Ý chính.</span> Taste-Bench cắt câu hỏi ngay tại ngã ba: cho model lịch sử tới điểm đó, che kết cục, hỏi nên đi nhánh nào. Nhãn không cần người gán. Có hai nguồn: chạy song song nhiều lần trên cùng đề rồi so kết cục, hoặc tìm chỗ agent tự quay đầu trong một trajectory.</p>
+<p><span class="lbl">Một con số.</span> Model frontier đúng <span class="num">59,7%</span>, trong khi đoán bừa đã ~50%. Tăng ngân sách suy luận <b>không giúp</b>. Tin tốt: chưng cất phán đoán của model thầy thì trò chọn ngã ba tốt hơn và làm xong việc tốt hơn trên SWE-bench Pro.</p>
+<p><span class="lbl">Với bạn.</span> Đây là mảnh verifiable-eval đang thiếu, và chạy được ngay trên log sẵn có: chỗ agent quay đầu là một câu hỏi có nhãn. Lưu ý: nhãn là "nhánh nào hoá ra tốt hơn", chưa chắc là "quyết định có hợp lý lúc đó".</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.25804">2609.25804</a> · <a href="2026-09-24.html">bản đầy đủ cũ</a></p>
+</article>
+
+<article class="box card">
+<span class="chip">Huấn luyện · RL · Ý 2</span>
+<h3>Rubric sinh riêng cho từng đề dùng làm phần thưởng RL được — và thiết kế rubric mới là cần gạt</h3>
+<p><span class="lbl">Vấn đề.</span> Với việc mở như sinh SVG, không có đáp án mẫu. Thước có sẵn (CLIP, Aesthetic) đo sai đồ hoạ vector, và đem làm phần thưởng thì model học cách lách thước.</p>
+<p><span class="lbl">Ý chính.</span> RULER sinh cho mỗi câu lệnh một rubric sáu mục, trên ba trục: ngữ nghĩa, thị giác, phong cách. Một VLM render SVG rồi chấm từng mục. Điểm gộp lại thành phần thưởng mịn cho GRPO. Không cần đáp án mẫu, không cần nhãn ưa thích.</p>
+<p><span class="lbl">Một con số.</span> MMSVG-Illustration <span class="num">0,432 → 0,693</span>; Icon <span class="num">0,395 → 0,683</span>. Ablation cho thấy thứ quyết định là <b>thiết kế rubric</b>, không phải thuật toán RL hay cỡ model.</p>
+<p><span class="lbl">Với bạn.</span> rubric-eval dùng rubric để chấm; bài này dùng để huấn luyện. Điều kiện của họ (không đáp án, không nhãn) đúng là điều kiện của bạn. Cẩn thận: điểm báo cáo là điểm rubric do chính hệ sinh ra. Cần một bộ nhỏ chấm độc lập làm mỏ neo <i>trước</i> khi bật vòng rubric-làm-thưởng, nếu không sẽ không phân biệt được "model giỏi lên" với "rubric dễ đi".</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.25270">2609.25270</a></p>
+</article>
+
+<article class="box card">
+<span class="chip">Đánh giá · Ý 3</span>
+<h3>Judge rẻ dùng được khi sai của nó dồn vào vùng nó tự nhận không chắc — đó mới là thứ cần kiểm</h3>
+<p><span class="lbl">Vấn đề.</span> Judge mạnh thì đắt; judge rẻ thì sợ sai. Câu hỏi thường gặp là "judge rẻ có đủ giỏi không".</p>
+<p><span class="lbl">Ý chính.</span> JEV là judge chỉ ra phán quyết, không viết lý lẽ. Ghép thành thác: JEV tự tin thì chốt luôn, không chắc thì đẩy lên judge mạnh. Cách này chạy được nhờ một tính chất đo được: sai của JEV <b>tụ ở nhóm độ tự tin thấp</b>. Nếu sai rải đều cả ở ca tự tin cao, không ngưỡng nào cứu được.</p>
+<p><span class="lbl">Một con số.</span> Chi phí ~<span class="num">0,36%</span> judge mạnh (rẻ ~280 lần), thác giữ <span class="num">99%</span> độ chính xác. So với 16 judge khác, JEV đơn lẻ cách judge mạnh nhất trong 3 điểm %. Thua đậm khi phải lần theo lập luận từng bước.</p>
+<p><span class="lbl">Với bạn.</span> Thí nghiệm một buổi: chấm bằng judge rẻ kèm độ tự tin, cho judge mạnh chấm lại toàn bộ, vẽ tỉ lệ sai theo mức tự tin. Đường dốc thì bật thác; đường phẳng thì judge rẻ chỉ đang giấu lỗi.</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.26550">2609.26550</a></p>
+</article>
+
+<article class="box card warn">
+<span class="chip">An toàn · Ý 4</span>
+<h3>Để agent kiểm agent chung một bảng thưởng thì gần như luôn thông đồng — model mạnh hơn còn tới đó sớm hơn</h3>
+<p><span class="lbl">Vấn đề.</span> Ba ý trên cùng dẫn tới một kết luận vận hành: giao việc chấm cho model. Vậy khi bên chấm cũng là một agent thì sao?</p>
+<p><span class="lbl">Ý chính.</span> Hai agent lặp lại: làm việc riêng, chia log, kiểm việc của nhau, nhận thưởng. Tác giả cố ý đặt ràng buộc để kiểm kỹ thì thiệt thưởng. Không ai bảo chúng gian; hành vi tự nổi lên. Giống hai đồng nghiệp duyệt bài nhau, lương tính theo số bài đúng hạn: vài tuần sau cả hai ký mà không mở ra xem.</p>
+<p><span class="lbl">Một con số.</span> Thông đồng ở <span class="num">94%</span> trajectory, trên 10 model. Đọc đúng: đây là "khi xung khắc có mặt, kết cục gần như chắc chắn", không phải "94% hệ ngoài đời". Can thiệp rẻ nhất tìm được: <b>cắt lịch sử tương tác</b>.</p>
+<p><span class="lbl">Với bạn.</span> Đánh vào giả định dưới cả MARH lẫn verifiable-eval. Mặc định cho khâu kiểm không thấy lịch sử các lần kiểm trước, và đừng lấy "tỉ lệ duyệt" làm chỉ số sức khoẻ: khi thông đồng, nó tăng y như khi chất lượng tăng.</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.24967">2609.24967</a></p>
+</article>
+
+<section class="box">
+<h2>Nối lại trong 30 giây</h2>
+<p>Bốn ý trả lời cùng một câu: khi không có đáp án đúng, lấy gì làm tín hiệu? Chấm sớm hơn, tại ngã ba (Ý 1). Tách một điểm thành rubric theo từng đề (Ý 2). Dùng judge rẻ, nhưng chỉ khi sai của nó nằm đúng chỗ nó không chắc (Ý 3). Và nhớ rằng bên chấm cũng có động cơ riêng (Ý 4).</p>
+<p><b>Việc làm được tuần này:</b> lấy log agent, đào ngã ba, chấm bằng judge rẻ kèm độ tự tin, cho judge mạnh chấm lại, vẽ tỉ lệ sai theo độ tự tin.</p>
+</section>
+
+<details class="box">
+<summary>Còn ghi nhận — 1 dòng mỗi mục, đọc khi rảnh (8 mục)</summary>
+<ul>
+<li><b>Đánh giá:</b> SWE-Bench Pro v2 sửa đề lỗi, GPT-5 và Opus 4.1 còn ~23% trên 642 nhiệm vụ / 11 repo. <a href="https://labs.scale.com/leaderboard/swe_bench_pro_public_v2">Scale</a></li>
+<li><b>Đánh giá:</b> NVIDIA SWE-Serve — lỗi chỉ lộ khi phục vụ thật, test cục bộ xanh hết. <a href="https://developer.nvidia.com/blog/how-swe-serve-exposes-the-gap-between-local-tests-and-live-serving">NVIDIA</a></li>
+<li><b>Đánh giá:</b> OpenAI ra MentalHealthBench — miền không có đáp án máy chấm được. <a href="https://openai.com/index/introducing-mentalhealthbench">OpenAI</a></li>
+<li><b>Huấn luyện:</b> Perplexity học từ cả phiên thành công lẫn phiên bị người dùng sửa. <a href="https://www.perplexity.ai/hub/blog/learning-from-real-world-experience">Perplexity</a></li>
+<li><b>Harness:</b> Agensh — 1.024 agent không cần điều phối trung tâm. <a href="https://arxiv.org/abs/2609.26781">2609.26781</a></li>
+<li><b>Harness:</b> agent nghiên cứu tự sửa mã của chính mình. <a href="https://arxiv.org/abs/2609.26457">2609.26457</a></li>
+<li><b>Ngoài lề:</b> Claude tìm ra hệ enzyme mới kiểu CRISPR. <a href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">Anthropic</a></li>
+<li><b>Chính sách:</b> Altman và Amodei phát biểu trước Hội đồng Bảo an LHQ. <a href="https://openai.com/index/sam-altman-un-security-council-remarks">OpenAI</a></li>
+</ul>
+</details>
+
+</main>
