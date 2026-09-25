@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<title>Tuần 39 · 21–27/09</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+
+:root{--bg:#f6f7f5;--card:#fff;--ink:#1c2321;--mute:#5d6964;--line:#dde3df;--acc:#1f7a5c;--acc2:#8a4fb0;--chip:#e7efe9;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131816;--card:#1b2220;--ink:#e6ece9;--mute:#9aa8a2;--line:#2c3532;--acc:#5cc59c;--acc2:#c79ae6;--chip:#22302b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131816;--card:#1b2220;--ink:#e6ece9;--mute:#9aa8a2;--line:#2c3532;--acc:#5cc59c;--acc2:#c79ae6;--chip:#22302b;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Be Vietnam Pro",system-ui,sans-serif}
+main{max-width:46rem;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:inherit;text-wrap:balance;line-height:1.3;margin:0}
+h1{font-size:1.6rem} h2{color:var(--mute);text-transform:uppercase;font-size:.85rem;letter-spacing:.04em} h3{font-size:1.15rem}
+h3.sec{font-size:1.3rem;margin-top:12px;padding-top:12px;border-top:2px solid var(--line)}
+p{margin:0} ul,ol{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:6px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.meta,.hint{color:var(--mute);font-size:.9rem}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.card{border-left:4px solid var(--acc)} .idea{border-left:4px solid var(--acc2)}
+.chip{align-self:flex-start;font:600 .72rem/1.3 "IBM Plex Mono",monospace;background:var(--chip);color:var(--acc);padding:5px 8px;border-radius:4px;letter-spacing:.03em}
+.idea .chip{color:var(--acc2)}
+.lbl{font-weight:700} .links{font-size:.9rem;color:var(--mute)} a{color:var(--acc)}
+.steps li span{display:block;color:var(--mute);font-size:.9rem}
+details summary{cursor:pointer;color:var(--mute);font-size:.92rem}
+.refs{font-size:.9rem} .src{color:var(--mute);font:.75rem "IBM Plex Mono",monospace}
+.main{border-left:4px solid var(--acc2)}
+.big{font-size:1.05rem}
+</style>
+<main>
+<header class="stack">
+<p class="meta">AI Digest · số tuần 39 · 21–27/09/2026 · ~25 phút cả tuần</p>
+<h1>Tuần này chỉ có một việc chính: đọc Chương 1</h1>
+<p class="meta">Các số cũ đã được cất vào kho lưu trữ. Từ giờ trang chủ chỉ có sách và số tuần.</p>
+</header>
+
+<article class="box main">
+<span class="chip">Đọc chính · ~20 phút</span>
+<h3><a href="chuong-01-bo-danh-gia.html">Chương 1 — Dựng bộ đánh giá mới, và thước chấm cho nó</a></h3>
+<p class="big">31 bài của tuần này đã nằm sẵn trong chương đó, cạnh bài của các tuần trước cùng chủ đề. Đọc chương là đọc gần hết tuần này, theo thứ tự dựng một bộ đánh giá thay vì theo ngày.</p>
+<p>Nếu chỉ có 8 phút: đọc Phần 1 (8 ý tưởng), rồi chọn một ý làm thử trong một buổi.</p>
+</article>
+
+<section class="stack">
+<h2>3 ý lớn ngoài mảng eval · ~5 phút</h2>
+
+<article class="box card">
+<span class="chip">Agent làm thay người · Anthropic</span>
+<h3>Agent làm thay bạn mà kết quả tầm tầm thì thường là do nó hiểu sai bạn, không phải do nó làm dở</h3>
+<p><span class="lbl">Vấn đề.</span> Khi agent làm việc thay người và kết quả chưa tốt, phản xạ là cải thiện khâu thực thi.</p>
+<p><span class="lbl">Ý chính.</span> Project Swap là thí nghiệm thật, không mô phỏng. 201 nhân viên kể sở thích đọc cho Claude (trung bình 216 từ qua tám lượt chat), rồi agent thay họ đổi sách trên một sàn giao dịch. Nhờ người thật tự xếp hạng sách, nhóm nghiên cứu tách được phần thiếu hụt do <i>hiểu sai</i> khỏi phần do <i>mặc cả kém</i>.</p>
+<p><span class="lbl">Một con số.</span> Trong phần thiếu hụt, <b>85%</b> đến từ việc agent chưa hiểu đúng người dùng muốn gì, chỉ <b>15%</b> từ thương lượng. Claude đoán đúng thứ tự ưa thích 61% số lần (đoán bừa 50%).</p>
+<p><span class="lbl">Với bạn.</span> Câu hỏi trong rubric eval Workspace cũng ngắn và thiếu ngữ cảnh. Nên có một cột riêng hỏi “agent có hiểu đúng yêu cầu không”, tách khỏi cột “làm có đúng không”. Nếu tỉ lệ 85/15 cũng đúng ở đó, phần lớn điểm mất nằm ở cột thứ nhất.</p>
+<p class="links"><a href="https://www.anthropic.com/research/project-swap">Anthropic Research</a> · số 25/09</p>
+</article>
+
+<article class="box card">
+<span class="chip">Bộ nhớ agent · 2609.27334</span>
+<h3>Chắt lọc ký ức lúc đọc thay vì lúc ghi: +16 điểm, và chưa cần huấn luyện gì</h3>
+<p><span class="lbl">Vấn đề.</span> Gần như mọi hệ bộ nhớ agent nén trajectory thành bản tóm tắt ngay lúc ghi. Lúc đó hệ chưa biết sau này sẽ bị hỏi gì, nên bản tóm tắt phải chung chung, và chi tiết bị vứt thì mất hẳn.</p>
+<p><span class="lbl">Ý chính.</span> JitMem giữ log thô. Khi có nhiệm vụ mới, một curator mới lọc ra gói nội dung bám sát nhiệm vụ đó. Vì gói được dùng ngay, curator học thẳng từ kết quả nhiệm vụ, không phải chờ một nhiệm vụ tương lai nào.</p>
+<p><span class="lbl">Một con số.</span> ALFWorld <b>+16,2</b>, WebShop <b>+16,3</b>, τ²-bench <b>+3,9</b> so với baseline mạnh nhất. Curator <i>chưa huấn luyện</i> đã ngang hoặc vượt các baseline đó, nên cái quyết định là thời điểm lọc chứ không phải việc học. Bài không nói giá lưu trữ và độ trễ lúc đọc.</p>
+<p><span class="lbl">Với bạn.</span> Đây là hướng ngược với rondo. Phép thử rẻ nhất: thêm một nhánh chỉ lưu log thô, lúc đọc cho model lọc theo nhiệm vụ, rồi so tỉ lệ hoàn thành và chi phí. Không cần train gì.</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.27334">2609.27334</a> · số 25/09</p>
+</article>
+
+<article class="box card">
+<span class="chip">Nhiều agent · Toby Ord</span>
+<h3>Bầy agent mua tốc độ, không mua chất lượng</h3>
+<p><span class="lbl">Vấn đề.</span> Với cùng ngân sách, nên chạy nhiều agent song song hay cho một agent nghĩ lâu hơn?</p>
+<p><span class="lbl">Ý chính.</span> Toby Ord đo mức các agent song song “giẫm chân nhau” bằng một tham số λ. N agent song song chỉ tương đương một agent được cấp thêm N<sup>λ</sup> token.</p>
+<p><span class="lbl">Một con số.</span> λ ≈ <b>0,48–0,68</b> trên ba benchmark. Bầy 16 agent ≈ một agent suy luận dài gấp 4. Nhưng 4 agent xong nhanh gấp đôi, với gấp đôi token. λ có thể đổi theo loại nhiệm vụ.</p>
+<p><span class="lbl">Với bạn.</span> Tiêu chí cho MARH: chỉ tăng số agent khi bạn cần tốc độ. Nếu token cố định và mục tiêu là chất lượng, một agent chạy lâu hơn sẽ thắng.</p>
+<p class="links"><a href="https://www.tobyord.com/writing/swarm-scaling">tobyord.com</a> · số 23/09</p>
+</article>
+</section>
+
+<details class="box">
+<summary>Còn ghi nhận trong tuần — 1 dòng mỗi mục, không bắt buộc đọc</summary>
+<ul>
+<li><b>Model mới:</b> Claude Opus 5.5, GPT-6 Sol/Luna và Grok 4.7 ra cùng tuần; cả ba quảng cáo <i>rẻ hơn</i> chứ không phải <i>điểm cao hơn</i>. <a href="2026-09-23.html">số 23/09</a></li>
+<li><b>Model mở:</b> model mở Trung Quốc chiếm >80% lượng dùng trên OpenRouter. <a href="2026-09-22.html">số 22/09</a></li>
+<li><b>Chính sách:</b> Altman, Amodei và Bengio phát biểu trước Hội đồng Bảo an LHQ. <a href="2026-09-24.html">số 24/09</a> · <a href="2026-09-25.html">25/09</a></li>
+<li><b>Harness:</b> CERA-MoA cho bộ định tuyến và agent học cùng nhau, giảm 45% token so với luôn gọi 2 agent. <a href="2026-09-21.html">số 21/09</a></li>
+<li><b>Harness:</b> EvolveTrade coi system prompt là tham số chính sách, cho agent khác viết lại theo kết quả thật. <a href="2026-09-21.html">số 21/09</a></li>
+<li><b>An toàn:</b> Perplexity thử phá sandbox của chính mình: không model nào thoát được VM, nhưng 4 model lách được chính sách. <a href="2026-09-25.html">số 25/09</a></li>
+</ul>
+</details>
+
+<section class="box">
+<h2>Tự kiểm — số tuần sau mở đầu bằng 3 câu này</h2>
+<ol>
+<li>Trong Project Swap, phần lớn thiếu hụt đến từ khâu nào?<details><summary>Đáp án</summary><p>Hiểu sai người dùng muốn gì (85%), không phải mặc cả (15%).</p></details></li>
+<li>JitMem khác các hệ bộ nhớ khác ở điểm nào, và vì sao không cần huấn luyện curator để thấy lợi ích?<details><summary>Đáp án</summary><p>Nó chắt lọc lúc đọc thay vì lúc ghi. Curator chưa huấn luyện đã ngang baseline, nên lợi ích đến từ thời điểm lọc.</p></details></li>
+<li>Khi nào nên tăng số agent song song?<details><summary>Đáp án</summary><p>Khi cần tốc độ. Với cùng token và mục tiêu chất lượng, một agent chạy lâu hơn thắng (λ ≈ 0,48–0,68).</p></details></li>
+</ol>
+</section>
+</main>
