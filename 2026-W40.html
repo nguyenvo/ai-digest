@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<title>Tuần 40 · 28/09–04/10</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+
+:root{--bg:#f6f7f5;--card:#fff;--ink:#1c2321;--mute:#5d6964;--line:#dde3df;--acc:#1f7a5c;--acc2:#8a4fb0;--chip:#e7efe9;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131816;--card:#1b2220;--ink:#e6ece9;--mute:#9aa8a2;--line:#2c3532;--acc:#5cc59c;--acc2:#c79ae6;--chip:#22302b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131816;--card:#1b2220;--ink:#e6ece9;--mute:#9aa8a2;--line:#2c3532;--acc:#5cc59c;--acc2:#c79ae6;--chip:#22302b;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Be Vietnam Pro",system-ui,sans-serif}
+main{max-width:46rem;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:inherit;text-wrap:balance;line-height:1.3;margin:0}
+h1{font-size:1.6rem} h2{color:var(--mute);text-transform:uppercase;font-size:.85rem;letter-spacing:.04em} h3{font-size:1.15rem}
+h3.sec{font-size:1.3rem;margin-top:12px;padding-top:12px;border-top:2px solid var(--line)}
+p{margin:0} ul,ol{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:6px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.meta,.hint{color:var(--mute);font-size:.9rem}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.card{border-left:4px solid var(--acc)} .idea{border-left:4px solid var(--acc2)}
+.chip{align-self:flex-start;font:600 .72rem/1.3 "IBM Plex Mono",monospace;background:var(--chip);color:var(--acc);padding:5px 8px;border-radius:4px;letter-spacing:.03em}
+.idea .chip{color:var(--acc2)}
+.lbl{font-weight:700} .links{font-size:.9rem;color:var(--mute)} a{color:var(--acc)}
+.steps li span{display:block;color:var(--mute);font-size:.9rem}
+details summary{cursor:pointer;color:var(--mute);font-size:.92rem}
+.refs{font-size:.9rem} .src{color:var(--mute);font:.75rem "IBM Plex Mono",monospace}
+.main{border-left:4px solid var(--acc2)}
+.big{font-size:1.05rem}
+</style>
+<main>
+<header class="stack">
+<p class="meta">AI Digest · số tuần 40 · 28/09–04/10/2026 · ~12 phút cả tuần</p>
+<h1>Thêm một tầng kiểm tra vào vòng lặp thì ăn; thêm một tầng harness thì không</h1>
+<p class="meta">Năm ý lớn tuần này đều chỉ vào cùng một chỗ: điểm mà hệ thống tự chấm chính nó.</p>
+</header>
+
+<section class="box">
+<h2>Ôn 1 phút — 3 câu của số tuần 39</h2>
+<ol>
+<li>Trong Project Swap, phần lớn thiếu hụt đến từ khâu nào?<details><summary>Đáp án</summary><p>Hiểu sai người dùng muốn gì (85%), không phải mặc cả (15%).</p></details></li>
+<li>JitMem khác các hệ bộ nhớ khác ở điểm nào, và vì sao không cần huấn luyện curator để thấy lợi ích?<details><summary>Đáp án</summary><p>Nó chắt lọc lúc đọc thay vì lúc ghi. Curator chưa huấn luyện đã ngang baseline, nên lợi ích đến từ thời điểm lọc.</p></details></li>
+<li>Khi nào nên tăng số agent song song?<details><summary>Đáp án</summary><p>Khi cần tốc độ. Với cùng token và mục tiêu chất lượng, một agent chạy lâu hơn thắng (λ ≈ 0,48–0,68).</p></details></li>
+</ol>
+</section>
+
+<section class="box">
+<h2>Bản đồ — 5 ý thuộc chương nào</h2>
+<ul>
+<li><b>Harness &amp; kiến trúc agent</b> — ý 1: kiểm tra từng hành động, đừng thêm tầng.</li>
+<li><b>Huấn luyện / chưng cất / RL</b> — ý 2: reward nhị phân từ test là quá thô.</li>
+<li><b>Đánh giá &amp; giám khảo</b> — ý 3 (benchmark hành vi sinh từ trace) và ý 4 (tự ra đề tự chấm thì tự thổi điểm).</li>
+<li><b>Bộ nhớ &amp; ngữ cảnh</b> — ý 5: nén KV-cache theo khối tạo điểm mù tuần hoàn.</li>
+</ul>
+<p class="hint">Ý 3 và ý 4 bổ sung cho <a href="chuong-01-bo-danh-gia.html">Chương 1 — Dựng bộ đánh giá mới, và thước chấm cho nó</a>.</p>
+</section>
+
+<section class="stack">
+<h2>5 ý lớn</h2>
+
+<article class="box idea">
+<span class="chip">Harness &amp; kiến trúc agent · 2609.39982</span>
+<h3>Chỗ đáng đầu tư không phải thêm tầng harness, mà là kiểm tra từng hành động trước khi chạy nó</h3>
+<p><span class="lbl">Vấn đề.</span> Khi agent terminal làm sai, phản xạ là dựng thêm tầng điều phối quanh nó. Tuần này có hai bài cùng nói phản xạ đó sai chỗ.</p>
+<p><span class="lbl">Ý chính.</span> Mid-Harness không sửa model cũng không sửa harness. Nó chèn một bước vào đúng ranh giới giữa hai thứ đó: với mỗi lượt, sinh nhiều hành động ứng viên, cho một model khác kiểm tra, rồi chỉ chuyển một hành động xuống cho harness chạy. Tức là mở rộng theo <i>hành động</i>, không phải theo <i>trajectory</i>.</p>
+<p><span class="lbl">Một con số.</span> TerminalBench-Lite, generator TMAX-9B: Pass@1 <b>50.00%</b> → <b>68.03%</b> với verifier GPT-5.6 Sol và 8 hành động mẫu. Rẻ hơn việc sinh thêm trajectory ở cùng mức thành công. Hạn chế bài tự nêu: “more action sampling yields little benefit under weak verification” — verifier yếu thì lấy mẫu bao nhiêu cũng vô ích.</p>
+<p><span class="lbl">Với bạn.</span> Đúng chỗ MARH đang thiếu: thay vì thêm agent, thêm một cổng kiểm tra trước mỗi hành động ghi/chạy. Apple đo riêng và thấy các harness mã nguồn mở “provide no advantages over a single session of a minimal-harness coding agent baseline”, nên tầng điều phối không phải nơi sinh lời.</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.39982">2609.39982</a> · <a href="https://machinelearning.apple.com/research/harness-autonomous-ml-engineering">Apple ML Research</a></p>
+</article>
+
+<article class="box idea">
+<span class="chip">Huấn luyện / RL · 2609.32577</span>
+<h3>“Pass test” là reward quá thô: hai lời giải cùng xanh không cùng chất lượng, và RL học đúng cái thô đó</h3>
+<p><span class="lbl">Vấn đề.</span> RL cho code agent thường lấy test chạy được làm reward nhị phân. Mọi trajectory pass đều được cộng điểm bằng nhau, kể cả lời giải lách test.</p>
+<p><span class="lbl">Ý chính.</span> GAGAR chỉ giữ các nhóm rollout có cả bài pass và bài fail, đặt chúng cạnh nhau trong một workspace chung cho một grader đọc so sánh, rồi xếp hạng <i>trong số các bài đã pass</i>. Bài xếp dưới bị hạ trọng số, và advantage của cả nhóm pass được co giãn lại cho tổng không đổi — nên đây là phân bổ lại tín dụng, không phải cộng thêm reward.</p>
+<p><span class="lbl">Một con số.</span> DeepSWE v1.1: baseline nhị phân 58.5% ở step 20 rồi <i>tụt</i> còn 50.2% ở step 28; GAGAR 62.2% ở step 28 (+12.1 pp), đỉnh 63.4%. Số lượt giảm 15.6% (132.3 → 111.6). Giá: chấm ~600s mỗi nhóm.</p>
+<p><span class="lbl">Với bạn.</span> Đây chính là mảng eval/RL hành vi viết test. Việc làm được ngay: trong bộ của bạn, chấm thêm một hạng trong số các lần <i>đã xanh</i> — có viết test mới không, test có khẳng định gì không — rồi xem baseline nhị phân có tụt sau vài chục step như ở đây.</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.32577">2609.32577</a></p>
+</article>
+
+<article class="box idea">
+<span class="chip">Đánh giá &amp; giám khảo · 2609.33295</span>
+<h3>Benchmark hành vi dựng tự động từ log vận hành thật, và model frontier trượt gần ba phần tư</h3>
+<p><span class="lbl">Vấn đề.</span> Muốn đo một hành vi cụ thể của agent thì phải tự viết benchmark, nên hiếm ai đo hành vi, chỉ đo kết quả.</p>
+<p><span class="lbl">Ý chính.</span> TraceDance nhận một đặc tả hành vi, truy hồi trong log triển khai thật những chỗ hành vi đó có thể xảy ra, rồi cho một model nhanh xác nhận từng ứng viên. Chấm bằng cách cắt log tại một điểm ra quyết định có thật và chỉ hỏi lượt tiếp theo, so với một rubric riêng cho hành vi — không cần đáp án mẫu, không cần diễn lại môi trường.</p>
+<p><span class="lbl">Một con số.</span> Từ <b>252,557 sessions</b> dựng ra <b>107 benchmarks</b> với <b>4,125 instances</b>; <b>95.3%</b> yêu cầu dựng được đáp ứng; <b>84%</b> đồng thuận với người; và chín LLM frontier chỉ đạt <b>26.7%</b> pass rate trung bình.</p>
+<p><span class="lbl">Với bạn.</span> Khớp trực tiếp với rubric eval Workspace: bạn đang thiếu đúng khâu sinh ca thử. Một bước làm được: lấy log agent của chính bạn, cắt tại điểm nó quyết định “có viết test hay không”, và chấm lượt kế tiếp bằng rubric — không cần đáp án chuẩn.</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.33295">2609.33295</a></p>
+</article>
+
+<article class="box idea">
+<span class="chip">Đánh giá &amp; giám khảo · 2609.39102</span>
+<h3>Khi hệ tự ra đề và tự chấm, điểm nội bộ tăng đều trong lúc đúng-thật đi ngang</h3>
+<p><span class="lbl">Vấn đề.</span> Vòng tự tiến hóa có một bên ra đề và một bên giải. Cả hai cùng được huấn luyện, nên chúng dần đồng ý với nhau — kể cả khi cùng sai.</p>
+<p><span class="lbl">Ý chính.</span> Bài gọi hiện tượng đó bằng tên: proposer và solver ngày càng thống nhất trên các lỗi dùng chung, nên reward nội bộ tăng mà đúng-thật không tăng. Dấu hiệu đo được là độ đúng của pseudo-label đi ngang hoặc giảm trong khi tín hiệu huấn luyện vẫn lên. Cách chữa rẻ nhất là cấm chấm cùng nguồn: chia tài liệu thành nhóm A và B, câu hỏi từ A chỉ do solver học trên B chấm.</p>
+<p><span class="lbl">Một con số.</span> Khối “cùng sai mà cùng đồng ý” giảm từ <b>6.1% → 3.0%</b> (model 4B) và <b>8.8% → 3.7%</b> (9B). Hơn self-evolution thường <b>8.8</b> và <b>8.4</b> điểm. Cách phụ (hỏi 6 lần mỗi ứng viên) lợi ít mà tốn nhiều.</p>
+<p><span class="lbl">Với bạn.</span> Nếu rubric eval dùng model cùng họ để vừa sinh ca thử vừa chấm, bạn đang ở trong vòng này. Một dòng sửa: tách nguồn sinh và nguồn chấm, rồi theo dõi hiệu giữa điểm nội bộ và một tập giữ-ngoài nhỏ.</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.39102">2609.39102</a></p>
+</article>
+
+<article class="box idea">
+<span class="chip">Bộ nhớ &amp; ngữ cảnh · 2609.36322</span>
+<h3>Nén KV-cache theo khối tạo ra điểm mù tuần hoàn, nên điểm trung bình cao vẫn che được lỗi hệ thống</h3>
+<p><span class="lbl">Vấn đề.</span> Nén ngữ cảnh thường được đánh giá bằng một điểm gộp. Điểm gộp giả định lỗi rải đều.</p>
+<p><span class="lbl">Ý chính.</span> Khi token bị gom vào cache theo bước cố định, vị trí của token so với biên cửa sổ nén quyết định sau này nó khó hay dễ được tìm lại. Bài đặt tên cho vị trí tương đối đó là <i>phase</i>, và chỉ ra rằng các thành phần attention khác nhau đảm nhiệm các phase khác nhau — nên lỗi không rải đều mà lặp lại đúng theo chu kỳ của bước nén.</p>
+<p><span class="lbl">Một con số.</span> Độ chính xác truy hồi long-context chênh tới <b>40 percentage points</b> giữa các phase. Kết luận về phương pháp đo: đánh giá loại model này “requires measuring across compression phases”, không được dựa vào điểm gộp. Bài không nêu tên benchmark cụ thể kèm con số này.</p>
+<p><span class="lbl">Với bạn.</span> rondo nén ngữ cảnh theo khối, nên rủi ro này là trực tiếp. Phép thử rẻ: đặt cùng một fact ở nhiều độ lệch khác nhau so với biên khối, đo tỉ lệ tìm lại theo từng độ lệch thay vì lấy trung bình.</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.36322">2609.36322</a></p>
+</article>
+</section>
+
+<section class="box main">
+<h2>Nối lại trong 30 giây</h2>
+<p class="big">Cả năm ý trả lời cùng một câu hỏi: <b>hệ thống của bạn đang tin ai khi nó tự chấm chính nó?</b> Mid-Harness thêm một người kiểm tra ở ranh giới hành động và ăn 18 điểm. GAGAR cho thấy tin tuyệt đối vào test xanh thì RL tụt. False Frontiers cho thấy tin vào chính mình thì điểm tăng mà năng lực không tăng. TraceDance dựng người chấm từ log thật. Periodic Weak Spots cho thấy ngay cả con số trung bình cũng là một người chấm đang nói dối bạn.</p>
+<p>Việc làm được trong tuần: chọn một chỗ trong bộ eval của bạn mà nguồn sinh và nguồn chấm là cùng một model, rồi tách chúng ra.</p>
+</section>
+
+<details class="box">
+<summary>Còn ghi nhận trong tuần — 1 dòng mỗi mục, không bắt buộc đọc</summary>
+<ul>
+<li><b>RL/reward:</b> Arena ghép preference reward (Bradley–Terry trên ~5 triệu phiếu đôi của người) với rubric reward do VLM chấm theo checklist, bắt được đúng ba thứ preference bỏ sót: faithfulness, constraint và reward-hacking; FLUX.2-dev “gains 69 Arena points”, offline 66.0% win rate. <a href="https://news.lmarena.ai/blog/post-training-text-to-image-models">Arena</a></li>
+<li><b>An toàn &amp; hành vi lệch:</b> hậu huấn luyện để lại “vết” trên cả quyết định không liên quan — chỉ một từ của teacher mỗi prompt, 5,664 response, đã cho 5.34 pp trên HumanEval+ so với control khớp nhiễu. <a href="https://arxiv.org/abs/2609.29233">2609.29233</a></li>
+<li><b>Harness:</b> Raven đề xuất một “harness của các harness” để ghép các agent lại. <a href="https://arxiv.org/abs/2609.33439">2609.33439</a></li>
+<li><b>Skill &amp; công cụ:</b> công cụ auto-eval mới của Claude, Hamel mổ xẻ. <a href="https://hamel.dev/blog/posts/claude-auto-evals">hamel.dev</a></li>
+<li><b>Skill &amp; công cụ:</b> Thariq Shihipar (Anthropic) nói về chặng tiếp theo của Claude Code. <a href="https://www.latent.space/p/thariq">Latent Space</a></li>
+<li><b>An toàn:</b> Chris Painter điều trần trước Thượng viện Mỹ về sự cố do AI agent gây ra. <a href="https://metr.org/blog/2026-09-30-chris-painter-senate-testimony">METR</a></li>
+<li><b>An toàn:</b> Frontier Red Team của Anthropic về GLM-5.3 và sự lan rộng của năng lực tấn công mạng. <a href="https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities">Anthropic</a></li>
+<li><b>Model mới &amp; chính sách:</b> OpenAI DevDay 2026 (GPT-6.1 Sol, dots), Gemini 4 Argon; FPF kêu gọi taxonomy dùng chung cho chữ “agentic”. <a href="https://openai.com/index/devday-2026-recap">DevDay</a> · <a href="https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence">DeepMind</a> · <a href="https://fpf.org/blog/defining-agentic-why-we-need-a-shared-taxonomy-for-ai-agents">FPF</a></li>
+</ul>
+</details>
+
+<section class="box">
+<h2>Tự kiểm — số tuần sau mở đầu bằng 3 câu này</h2>
+<ol>
+<li>Mid-Harness thêm gì vào vòng lặp, và điều kiện để nó có tác dụng?<details><summary>Đáp án</summary><p>Sinh nhiều hành động ứng viên rồi kiểm tra trước khi chạy một hành động (50.00% → 68.03%). Verifier yếu thì lấy mẫu thêm gần như vô ích.</p></details></li>
+<li>Vì sao “pass test” là reward chưa đủ cho RL code agent?<details><summary>Đáp án</summary><p>Các lời giải cùng pass không cùng chất lượng. GAGAR xếp hạng trong nhóm đã pass và phân bổ lại advantage: +12.1 pp ở step 28, số lượt giảm 15.6%.</p></details></li>
+<li>Dấu hiệu của co-cheating trong hệ tự tiến hóa, và cách chữa rẻ nhất?<details><summary>Đáp án</summary><p>Reward nội bộ tăng nhưng độ đúng thật đi ngang hoặc giảm. Chữa bằng chấm chéo nguồn (CrossFit): câu hỏi từ nhóm A do solver học trên nhóm B chấm.</p></details></li>
+</ol>
+</section>
+</main>
