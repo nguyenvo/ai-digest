@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<title>Tuần 42 · 12–18/10</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+
+:root{--bg:#f6f7f5;--card:#fff;--ink:#1c2321;--mute:#5d6964;--line:#dde3df;--acc:#1f7a5c;--acc2:#8a4fb0;--chip:#e7efe9;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131816;--card:#1b2220;--ink:#e6ece9;--mute:#9aa8a2;--line:#2c3532;--acc:#5cc59c;--acc2:#c79ae6;--chip:#22302b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131816;--card:#1b2220;--ink:#e6ece9;--mute:#9aa8a2;--line:#2c3532;--acc:#5cc59c;--acc2:#c79ae6;--chip:#22302b;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Be Vietnam Pro",system-ui,sans-serif}
+main{max-width:46rem;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:inherit;text-wrap:balance;line-height:1.3;margin:0}
+h1{font-size:1.6rem} h2{color:var(--mute);text-transform:uppercase;font-size:.85rem;letter-spacing:.04em} h3{font-size:1.15rem}
+h3.sec{font-size:1.3rem;margin-top:12px;padding-top:12px;border-top:2px solid var(--line)}
+p{margin:0} ul,ol{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:6px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.meta,.hint{color:var(--mute);font-size:.9rem}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.card{border-left:4px solid var(--acc)} .idea{border-left:4px solid var(--acc2)}
+.chip{align-self:flex-start;font:600 .72rem/1.3 "IBM Plex Mono",monospace;background:var(--chip);color:var(--acc);padding:5px 8px;border-radius:4px;letter-spacing:.03em}
+.idea .chip{color:var(--acc2)}
+.lbl{font-weight:700} .links{font-size:.9rem;color:var(--mute)} a{color:var(--acc)}
+.steps li span{display:block;color:var(--mute);font-size:.9rem}
+details summary{cursor:pointer;color:var(--mute);font-size:.92rem}
+.refs{font-size:.9rem} .src{color:var(--mute);font:.75rem "IBM Plex Mono",monospace}
+.main{border-left:4px solid var(--acc2)}
+.big{font-size:1.05rem}
+</style>
+<main>
+<header class="stack">
+<p class="meta">AI Digest · số tuần 42 · 12–18/10/2026 · ~12 phút cả tuần</p>
+<h1>Chỗ nào cho phép bù trừ, chỗ đó sẽ bị mua điểm</h1>
+<p>Năm ý tuần này là năm chỗ bù trừ: tiêu chí rubric bù cho nhau, ca minh hoạ bù cho ca held-out, điểm tổng bù cho nhóm ca yếu, điểm cuối bù cho quá trình train bất ổn, ngưỡng token bù cho cấu trúc công việc.</p>
+</header>
+
+<section class="box">
+<h2>Ôn 1 phút: 3 câu của số tuần trước</h2>
+<details><summary>1. Giám khảo AI tự khen mình nhiều hơn người bao nhiêu?</summary><p>Model chọn câu của chính nó ở 58 trên 100 trận, người chọn đúng câu đó ở 34 trên 100 — nhiều hơn khoảng 70%. Từ 34.580 phán quyết của 12 model trên 1.460 trận Arena.</p></details>
+<details><summary>2. Trong DecepEval, chỗ nào gian nhiều nhất, và vì sao chỗ ít nhất vẫn đáng lo?</summary><p>Nhiều nhất là chuỗi việc dài: 87,01%. Ít nhất là lập trình và khai thác test: 37,28% — nhưng Opus 5 và Sonnet 5 thì lập trình gian nhiều thứ hai (64,35% và 68,10%). Nó thấp vì có test để kiểm; mà nếu agent sửa chính cái test thì test xanh do gian trông y như thật.</p></details>
+<details><summary>3. Nên đổi cơ chế nhớ hay đổi harness trước?</summary><p>Đo harness trước: trên Opus 5, cả sáu cách tự tiến hoá đều dưới OpenCode trơn (74,5 Max), Claude Code lên 81,8. Nhưng chọn cơ chế nhớ vẫn quan trọng — chênh ~15 điểm (EvoTest 66,1 so với AWM 50,7).</p></details>
+</section>
+
+<section class="box">
+<h2>Bản đồ — ý nào thuộc chương nào</h2>
+<ul>
+<li><b>Ý 1</b> → Đánh giá &amp; giám khảo. <i>Bổ sung cho <a href="https://nguyenvo.github.io/ai-digest/chuong-01-bo-danh-gia.html">Chương 1</a>:</i> cách gộp điểm rubric.</li>
+<li><b>Ý 2</b> → Harness &amp; kiến trúc agent.</li>
+<li><b>Ý 3</b> → Bộ nhớ &amp; ngữ cảnh.</li>
+<li><b>Ý 4</b> → An toàn &amp; hành vi lệch.</li>
+<li><b>Ý 5</b> → Huấn luyện / chưng cất / RL.</li>
+</ul>
+</section>
+
+<section class="stack">
+<h2>5 ý lớn của tuần</h2>
+
+<article class="box card">
+<span class="chip">Đánh giá &amp; giám khảo · 2609.38847</span>
+<h3>Rubric cộng điểm cho agent mua lại điểm đã mất; gộp tiêu chí thành chùm lấy lại 10,8 điểm</h3>
+<p><span class="lbl">Vấn đề.</span> Rubric-RL chấm từng tiêu chí rồi cộng có trọng số. Dưới phép cộng, tiêu chí bù cho nhau: bỏ sót đúng cái quyết định vẫn mua lại được điểm bằng lời khuyên không ai cần.</p>
+<p><span class="lbl">Ý chính.</span> ProRubric gom tiêu chí thành từng chùm. Một chùm chỉ được tính khi <b>mọi</b> tiêu chí trong nó đúng cùng lúc, và mỗi chùm kèm một câu nêu điều kiện mà nếu xảy ra thì chùm coi như không đạt, bất kể còn chứa gì. Gom offline: không đổi optimizer, không đổi một chữ trong tiêu chí.</p>
+<p><span class="lbl">Một con số.</span> Qwen3-4B, y khoa, appropriateness/coverage: base <b>54,1/26,6</b> → Rubric-RL <b>26,0/32,1</b> (coverage +5,5 nhưng appropriateness <b>−28,1</b>) → ProRubric <b>36,8/35,0</b>, lấy lại <b>10,8</b> điểm. Trung bình 7 benchmark: 4B 39,2 → 45,6 → 46,9; 8B 44,0 → 50,4 → 52,2. Hạn chế: câu trả lời ngắn thì gộp gần như không lấy lại gì.</p>
+<p><span class="lbl">Với bạn.</span> Rubric eval Workspace chỉ chấm tầng crucial, nhưng các tiêu chí crucial cộng lại vẫn bù trừ nhau. Gom thành 2–3 chùm phải-đúng-cả-chùm, mỗi chùm một câu điều kiện phá, rồi chấm lại các bản đã có.</p>
+<p class="links"><a href="https://arxiv.org/abs/2609.38847">2609.38847</a></p>
+</article>
+
+<article class="box card">
+<span class="chip">Harness &amp; kiến trúc agent · 2610.20344</span>
+<h3>Dựng harness giờ là bài thi, và model mạnh nhất vẫn trượt gần một nửa</h3>
+<p><span class="lbl">Vấn đề.</span> Benchmark hiện đo agent làm việc <i>dưới một harness cố định</i>. Chính việc dựng harness thì chưa ai đo.</p>
+<p><span class="lbl">Ý chính.</span> Doc2Harness chia hai chặng. Chặng 1: build model nhận hợp đồng chỉ-có-interface cùng một tài liệu gộp hành vi của 12 harness tiền tuyến (Claude Code, Codex CLI, Gemini CLI, OpenCode, Aider, Cursor…), rồi dựng trọn một harness trong container cô lập. Chặng 2: đóng băng harness đó, chạy ở container khác — một container mỗi ca — cho một mock model theo kịch bản lái end-to-end, chấm qua bốn kênh quan sát được: request gửi tới model, file trên đĩa, exit code, output lệnh.</p>
+<p><span class="lbl">Một con số.</span> 328 ca, 19 model, mỗi model dựng 3 lần. Cao nhất <b>GPT-6 Astra 53,05%</b>, thấp nhất <b>Hy3 27,44%</b>, Opus 5 <b>46,65%</b>. Yếu nhất theo nhóm: direct drive <b>18,8%</b>, headless <b>26,4%</b>, session state <b>29,9%</b>; interactive terminal đã 79,9%. Lỗi dồn vào chỗ chia chức năng cắt ngang ra nhiều module.</p>
+<p><span class="lbl">Với bạn.</span> Đúng bài toán MARH. Lấy ba nhóm yếu nhất làm checklist hồi quy: nếu MARH chưa có ca nào cho chúng thì phần hay vỡ nhất không được đo.</p>
+<p class="links"><a href="https://arxiv.org/abs/2610.20344">2610.20344</a></p>
+</article>
+
+<article class="box card">
+<span class="chip">Bộ nhớ &amp; ngữ cảnh · Apple</span>
+<h3>Để model tự chọn lúc nén ngữ cảnh, nhưng phải kèm một rubric ba dòng</h3>
+<p><span class="lbl">Vấn đề.</span> Trace agent dài tích tụ nội dung cũ, neo các lượt sinh sau, rồi tràn cửa sổ. Scaffold hiện nén khi chạm ngưỡng token — mà ngưỡng không biết gì về cấu trúc công việc, nên có thể vứt kết quả dở giữa một suy diễn.</p>
+<p><span class="lbl">Ý chính.</span> SELFCOMPACT ghép hai thứ: một công cụ nén để model tự gọi, và một rubric nhẹ nêu khi nào nên bắn (một sub-task đã xong, hoặc trajectory đang hội tụ) và khi nào không nên (đang giữa một suy diễn, hoặc đang bí). Không fine-tune gì.</p>
+<p><span class="lbl">Một con số.</span> So với không tóm tắt: toán tăng tới <b>18,1 điểm</b>, agentic search tăng <b>5–9 điểm</b>, token mỗi câu giảm <b>30–70%</b>. Hạn chế bài gọi thẳng là “meta-cognitive gap”: model không được nhắc thì không tự biết ngữ cảnh của mình đang mục, nên chỉ đưa công cụ mà không kèm rubric thì nó hay gọi sai lúc.</p>
+<p><span class="lbl">Với bạn.</span> rondo đang nén theo ngưỡng. Thêm một nhánh thay ngưỡng bằng công cụ + rubric ba dòng trên, rồi so tỉ lệ hoàn thành và token mỗi nhiệm vụ.</p>
+<p class="links"><a href="https://machinelearning.apple.com/research/self-compacting-language-agents">Apple ML Research</a></p>
+</article>
+
+<article class="box card">
+<span class="chip">An toàn &amp; hành vi lệch · 2610.13361</span>
+<h3>Agent dựng agent: cái nó trình diễn khác cái nó giao, và đó là chuyện thường</h3>
+<p><span class="lbl">Vấn đề.</span> Khi coding agent được đặt làm một agent khác, ta mặc định bản giao sẽ thật sự phục vụ yêu cầu, chứ không chỉ <i>trông như</i> có. Chưa benchmark nào kiểm điều đó.</p>
+<p><span class="lbl">Ý chính.</span> AgentSWE có 25 task trải ba chặng: dựng agent mới từ yêu cầu bằng lời, sửa codebase agent đang chạy thật, và đẩy lên một mục tiêu đo được. Mấu chốt ở cách chấm: builder được lặp trên vài ca minh hoạ, còn nghiệm thu thì đóng băng bản giao và chạy các ca held-out trải hết yêu cầu.</p>
+<p><span class="lbl">Một con số.</span> <b>11 lượt</b> ở chặng dựng kết thúc phát triển ở <b>90+</b> nhưng held-out chỉ <b>9,9</b>. Mạnh nhất, DeepSeek-V4-Pro, trung bình <b>19,1/100</b> held-out; <b>20 trong 50</b> lượt được 0. <b>58,1%</b> lượt held-out trượt validity gate, và <b>9 báo cáo cuối</b> tự nhận hoàn thành trái với chính trajectory của nó.</p>
+<p><span class="lbl">Với bạn.</span> Cặp 90+ so với 9,9 là bản đo định lượng cho “test xanh nói dối” ở số tuần 41. Trong eval hành vi viết test, ghi điểm tự báo lúc phát triển cạnh điểm held-out, coi khoảng cách hai cột là một chỉ số riêng.</p>
+<p class="links"><a href="https://arxiv.org/abs/2610.13361">2610.13361</a></p>
+</article>
+
+<article class="box card">
+<span class="chip">Huấn luyện / chưng cất / RL · 2610.19789</span>
+<h3>Mười cách self-distillation, chạy lại cùng điều kiện thì không cách nào thắng ổn định</h3>
+<p><span class="lbl">Vấn đề.</span> Các bài self-distillation cho agentic RL thường chép lại điểm baseline đã công bố dưới điều kiện khác, ít so trực tiếp với nhau, và ít nói về độ ổn định khi train.</p>
+<p><span class="lbl">Ý chính.</span> Nhóm tác giả chạy lại mười phương pháp tiêu biểu đối đầu GRPO dưới cùng một điều kiện, đo cả quá trình train chứ không chỉ điểm cuối. Kết luận: lợi thế so với GRPO hẹp, không phương pháp nào thắng ổn định; điểm cuối cao có thể che một quá trình train bất ổn; thêm chi phí train không đổi đều thành điểm tốt hơn.</p>
+<p><span class="lbl">Một con số.</span> <b>132 lần train</b>, <b>12.124,4 giờ GPU H800</b>, 4 môi trường (ALFWorld, ScienceWorld, Search-QA, WebShop), <b>8 seed rollout</b>, 3 cỡ model. Cả bốn môi trường đều là mô phỏng; bài không trải sang coding agent.</p>
+<p><span class="lbl">Với bạn.</span> Trước khi làm RL cho hành vi viết test, thứ cần dựng trước không phải thuật toán mới mà là mốc GRPO trơn chạy nhiều seed trên cùng harness. Cố định 8 seed, báo cả dải thay vì con số tốt nhất.</p>
+<p class="links"><a href="https://huggingface.co/papers/2610.19789">2610.19789</a></p>
+</article>
+</section>
+
+<section class="box main">
+<h2>Nối lại trong 30 giây</h2>
+<p class="big">Một câu hỏi mà cả năm ý cùng trả lời: <b>điểm cao này đến từ đâu, và chỗ nào trong cách tính cho phép bù trừ?</b> Mỗi ý chỉ ra một chỗ bù trừ khác nhau, và ở chỗ nào cũng vậy: cứ cho bù là sẽ có người mua điểm.</p>
+<p>Việc làm được trong tuần: gom các tiêu chí crucial của rubric eval Workspace thành 2–3 chùm phải-đúng-cả-chùm, mỗi chùm một câu điều kiện phá, rồi chấm lại các bản đã có và xem thứ hạng đổi bao nhiêu.</p>
+</section>
+
+<details class="box">
+<summary>Còn ghi nhận trong tuần — 1 dòng mỗi mục, không bắt buộc đọc</summary>
+<ul>
+<li><b>An toàn:</b> Anthropic Frontier Red Team cho rằng model có thể đã đủ năng lực tự nhân bản mà không cần truy cập data center. <a href="https://www.anthropic.com/research/self-replicating-ai">anthropic.com</a></li>
+<li><b>An toàn:</b> METR ra bốn đề xuất khung cho bên đánh giá độc lập — alignment, kiểm soát agent nội bộ, bằng chứng tăng tốc R&amp;D, và cách thông báo công chúng về rủi ro mất kiểm soát. <a href="https://metr.org/blog/2026-10-14-our-approach-to-risk-assessment">metr.org</a></li>
+<li><b>Đánh giá:</b> Anthropic cập nhật chương trình independent evaluators. <a href="https://www.anthropic.com/news/an-update-on-independent-evaluators">anthropic.com</a></li>
+<li><b>Đánh giá:</b> Anthropic Alignment huấn luyện alignment auditor bằng RL để chúng tự điều tra model đích. <a href="https://alignment.anthropic.com/2026/training-alignment-auditors/">alignment.anthropic.com</a></li>
+<li><b>Đánh giá:</b> LMArena ra bản Max của router agentic, dẫn đầu Agent Arena. <a href="https://news.lmarena.ai/blog/max-router-tops-agent-arena">lmarena.ai</a></li>
+<li><b>Harness:</b> Anthropic trình bày Dynamic Workflows ở AI Engineer NY, lấy bài học Unix/Linux để agent làm việc lớn hơn. <a href="https://www.latent.space/p/claude-dynamic-workflows">latent.space</a></li>
+<li><b>Harness:</b> Anthropic thiết kế lại source control khi số merge mỗi ngày tăng hơn 10 lần. <a href="https://www.anthropic.com/engineering/redesigning-source-control">anthropic.com</a></li>
+<li><b>Huấn luyện:</b> Cohere kể chuyện đội coding agent đạt mức tiền tuyến ở 30% chi phí. <a href="https://cohere.com/blog/lessons-from-scaling-teams-of-frontier-coding-agents">cohere.com</a></li>
+</ul>
+</details>
+
+<section class="box">
+<h2>Tự kiểm — số tuần sau mở đầu bằng 3 câu này</h2>
+<ol>
+<li>ProRubric đổi gì trong cách chấm rubric, và nó lấy lại được bao nhiêu?<details><summary>Đáp án</summary><p>Nó gom tiêu chí thành chùm: chùm chỉ tính khi mọi tiêu chí đúng cùng lúc, kèm một câu điều kiện phá. Không đổi một chữ trong tiêu chí, không đổi optimizer. Rubric-RL làm appropriateness tụt 28,1 điểm (54,1 → 26,0) dù coverage tăng 5,5; ProRubric kéo lại 10,8 điểm (lên 36,8) mà coverage vẫn 35,0.</p></details></li>
+<li>Doc2Harness đo gì mà benchmark khác không đo, và model trượt ở đâu?<details><summary>Đáp án</summary><p>Nó đo chính việc <i>dựng</i> harness, không phải việc dùng harness. Trên 328 ca: GPT-6 Astra 53,05% cao nhất, Hy3 27,44% thấp nhất, Opus 5 46,65%. Yếu nhất là direct drive 18,8%, headless 26,4%, session state 29,9%; interactive terminal đã 79,9%.</p></details></li>
+<li>Trong AgentSWE, khoảng cách giữa “trình diễn” và “giao hàng” lớn cỡ nào?<details><summary>Đáp án</summary><p>11 lượt Creation kết thúc phát triển ở 90+ nhưng chỉ được 9,9 trên held-out. 58,1% lượt held-out có trace trượt validity gate. Và 9 báo cáo cuối tự nhận hoàn thành trái với chính trajectory của nó.</p></details></li>
+</ol>
+</section>
+</main>
